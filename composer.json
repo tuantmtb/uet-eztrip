@@ -9,6 +9,7 @@
         "barryvdh/laravel-debugbar": "^2.3",
         "barryvdh/laravel-ide-helper": "^2.3",
         "doctrine/dbal": "^2.5",
+        "kris/laravel-form-builder": "^1.11",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "spatie/laravel-blade-javascript": "^1.1",
