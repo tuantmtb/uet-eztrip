@@ -26,5 +26,19 @@ class Permission extends EntrustPermission
 {
     protected $fillable = ['name', 'display_name', 'description'];
 
+    /**
+     * @param string $name
+     * @return Permission
+     */
+    public static function findByName($name)
+    {
+        $permission = static::whereName($name)->first();
+
+//        if (!$permission) {
+//            throw new PermissionDoesNotExist();
+//        }
+
+        return $permission;
+    }
 
 }

@@ -47,7 +47,7 @@ Jquery
             $ php artisan optimize
             $ composer dump-autoload
             $ php artisan config:cache
-            $ php artisan cache:cleả
+            $ php artisan cache:clear
             
 #### Debug, print console
             

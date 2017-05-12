@@ -26,4 +26,19 @@ use Zizaco\Entrust\EntrustRole;
 class Role extends EntrustRole
 {
     protected $fillable = ['name', 'display_name', 'description'];
+
+    /**
+     * @param string $name
+     * @return Role
+     */
+    public static function findByName($name)
+    {
+        $permission = static::whereName($name)->first();
+
+//        if (!$permission) {
+//            throw new RoleDoesNotExist();
+//        }
+
+        return $permission;
+    }
 }
