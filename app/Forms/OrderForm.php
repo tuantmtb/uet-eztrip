@@ -17,14 +17,32 @@ class OrderForm extends Form
             ->add('email', 'email')
             ->add('name_on_card', 'text')
             ->add('card_number', 'text')
-            ->add('expiration_date_month', 'text')
-            ->add('expiration_date_year', 'text')
+            ->add('expiration_date_month', 'select', [
+                'choices' => collect(range(1, 12))->mapWithKeys(function ($month) {
+                    return [$month => $month];
+                })->toArray()
+            ])
+            ->add('expiration_date_year', 'number', [
+                'attr' => [
+                    'min' => 0,
+                ]
+            ])
             ->add('ccv', 'text')
-            ->add('number_of_people', 'number')
+            ->add('number_of_people', 'number', [
+                'attr' => [
+                    'min' => 0
+                ]
+            ])
             ->add('tour_id', 'select', [
+                'rules' => [
+                    'required'
+                ],
                 'choices' => Tour::pluck('name', 'id')->toArray(),
             ])
             ->add('tourist_id', 'select', [
+                'rules' => [
+                    'required',
+                ],
                 'choices' => User::pluck('name', 'id')->toArray(),
             ])
             ->add('submit', 'submit');

@@ -11,18 +11,32 @@ class TourForm extends Form
     {
         $this
             ->add('name', 'text', [
-                'required'
+                'rules' => [
+                    'required'
+                ]
             ])
             ->add('description', 'textarea')
             ->add('place', 'text')
             ->add('city', 'text')
-            ->add('price', 'number')
-            ->add('time_begin', 'text')
-            ->add('time_end', 'text')
-            ->add('time_duration', 'number')
+            ->add('price', 'number', [
+                'attr' => [
+                    'step' => 0.01,
+                    'min' => 0,
+                ],
+            ])
+            ->add('time_begin', 'date')
+            ->add('time_end', 'date')
+            ->add('time_duration', 'number', [
+                'attr' => [
+                    'min' => 0
+                ],
+            ])
             ->add('url_cover', 'url')
             ->add('url_gird', 'url')
             ->add('tourguide_id', 'select', [
+                'rules' => [
+                    'required',
+                ],
                 'choices' => User::pluck('name', 'id')->toArray(),
             ])
             ->add('submit', 'submit');
