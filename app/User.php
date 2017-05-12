@@ -49,4 +49,23 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Nếu user có quyền là tourguide thì trả về các tour đã tạo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tours()
+    {
+        return $this->hasMany('\App\Tour', 'tourguide_id');
+    }
+
+    /**
+     * Nếu user có quyền là tourist thì trả về các chuyến đi đã thanh toán
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders()
+    {
+        return $this->hasMany('\App\Order', 'tourist_id');
+    }
+
 }
