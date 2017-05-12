@@ -2,6 +2,7 @@
 
 namespace App\Forms;
 
+use App\User;
 use Kris\LaravelFormBuilder\Form;
 
 class TourForm extends Form
@@ -21,6 +22,9 @@ class TourForm extends Form
             ->add('time_duration', 'number')
             ->add('url_cover', 'url')
             ->add('url_gird', 'url')
+            ->add('tourguide_id', 'select', [
+                'choices' => User::pluck('name', 'id')->toArray(),
+            ])
             ->add('submit', 'submit');
     }
 }

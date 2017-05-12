@@ -2,6 +2,8 @@
 
 namespace App\Forms;
 
+use App\Tour;
+use App\User;
 use Kris\LaravelFormBuilder\Form;
 
 class OrderForm extends Form
@@ -19,6 +21,12 @@ class OrderForm extends Form
             ->add('expiration_date_year', 'text')
             ->add('ccv', 'text')
             ->add('number_of_people', 'number')
+            ->add('tour_id', 'select', [
+                'choices' => Tour::pluck('name', 'id')->toArray(),
+            ])
+            ->add('tourist_id', 'select', [
+                'choices' => User::pluck('name', 'id')->toArray(),
+            ])
             ->add('submit', 'submit');
     }
 }
