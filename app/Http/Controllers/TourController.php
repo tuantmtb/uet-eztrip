@@ -15,7 +15,7 @@ class TourController extends Controller
             'url' => route('tour.store'),
         ]);
 
-        return view('layouts.form', compact('form'));
+        return view('tour.create', compact('form'));
     }
 
     public function store(FormBuilder $formBuilder) {

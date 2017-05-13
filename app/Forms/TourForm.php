@@ -24,8 +24,8 @@ class TourForm extends Form
                     'min' => 0,
                 ],
             ])
-            ->add('time_begin', 'date')
-            ->add('time_end', 'date')
+            ->add('time_begin', 'datetime-local')
+            ->add('time_end', 'datetime-local')
             ->add('time_duration', 'number', [
                 'attr' => [
                     'min' => 0

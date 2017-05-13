@@ -15,7 +15,7 @@ class OrderController extends Controller
             'url' => route('order.store'),
         ]);
 
-        return view('layouts.form', compact('form'));
+        return view('order.create', compact('form'));
     }
 
     public function store(FormBuilder $formBuilder) {
