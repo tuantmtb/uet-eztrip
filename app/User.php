@@ -13,14 +13,22 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
  * @property string $name
  * @property string $email
  * @property string $password
+ * @property string $address
+ * @property string $description
+ * @property string $img_avatar
  * @property string $remember_token
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Order[] $orders
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Role[] $roles
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Tour[] $tours
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereAddress($value)
  * @method static \Illuminate\Database\Query\Builder|\App\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereDescription($value)
  * @method static \Illuminate\Database\Query\Builder|\App\User whereEmail($value)
  * @method static \Illuminate\Database\Query\Builder|\App\User whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereImgAvatar($value)
  * @method static \Illuminate\Database\Query\Builder|\App\User whereName($value)
  * @method static \Illuminate\Database\Query\Builder|\App\User wherePassword($value)
  * @method static \Illuminate\Database\Query\Builder|\App\User whereRememberToken($value)
@@ -32,14 +40,7 @@ class User extends Authenticatable
     use Notifiable;
     use EntrustUserTrait;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
