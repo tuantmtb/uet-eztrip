@@ -15,7 +15,9 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function index() {
-        return redirect()->route('home');
+    public function index()
+    {
+//        return redirect()->route('home');
+        return view('index');
     }
 }

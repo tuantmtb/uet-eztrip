@@ -11,6 +11,6 @@ class TourSeeder extends Seeder
      */
     public function run()
     {
-        
+
     }
 }
