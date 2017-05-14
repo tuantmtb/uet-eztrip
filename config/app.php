@@ -172,6 +172,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -235,6 +236,7 @@ return [
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
     ],
 
 ];

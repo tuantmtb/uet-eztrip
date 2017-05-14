@@ -13,4 +13,3 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('tours/cartItem', 'Api\TourApiController@cartItem')->name('api.tour.cartItem');

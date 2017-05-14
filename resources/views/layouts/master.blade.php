@@ -142,13 +142,24 @@
                         <li>
                             <div class="dropdown dropdown-cart">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class=" icon-basket-1"></i>Tour orders <span id="cart_count"></span>
+                                    <i class=" icon-basket-1"></i>Tour orders ({{Cart::content()->count()}})
                                 </a>
                                 <ul class="dropdown-menu" id="cart_items">
+                                    @foreach(Cart::content() as $cart)
+                                        <li class="cart_item">
+                                            <div class="image">
+                                                <img src="{{$cart->options->get('url_gird')}}">
+                                            </div>
+                                            <strong>
+                                                <a href="{{route('tour.show', $cart->id)}}">{{$cart->name}}</a> {{$cart->qty}}x ${{$cart->price}}
+                                            </strong>
+                                            <a href="javascript:" class="action" onclick="deleteCart('{{$cart->rowId}}')"><i class="icon-trash"></i></a>
+                                        </li>
+                                    @endforeach
                                     <li>
-                                        <div>Total: $<span id="cart_total">0</span></div>
-                                        <a href="cart.html" class="button_drop">Go to cart</a>
-                                        <a href="payment.html" class="button_drop outline">Check out</a>
+                                        <div>Total: $<span>{{Cart::total()}}</span></div>
+                                        <a href="{{route('cart')}}" class="button_drop">Go to cart</a>
+                                        <a href="{{route('cart')}}" class="button_drop outline">Check out</a>
                                     </li>
                                 </ul>
                             </div><!-- End dropdown-cart-->
@@ -240,50 +251,21 @@
             </div><!-- End row -->
         </div><!-- End container -->
     </footer><!-- End footer -->
+
+    <div hidden>
+        {{Form::open(['method' => 'post', 'route' => 'cart.delete', 'id' => 'cart-delete-form'])}}
+        {{Form::hidden('rowId')}}
+        {{Form::close()}}
+    </div>
 @endsection
 
 @section('page-level-scripts')
     @parent
     <script>
-        function updateCart() {
-            if (!$.cookie('orders')) {
-                $.cookie('orders', JSON.stringify([]), {path: '/'});
-            }
-
-            var cart_items = $('#cart_items');
-            var orders = JSON.parse($.cookie('orders'));
-            var total = 0;
-
-            $('#cart_count').text(" (" + orders.length + ")");
-            $('.cart_item').remove();
-            $('#cart_total').text(total);
-
-            orders.reverse().forEach(function (order) {
-                $.ajax({
-                    method: 'get',
-                    url: '{{route('api.tour.cartItem')}}?id=' + order.id + '&total_amount=' + order.total_amount
-                }).done(function (response) {
-                    cart_items.prepend(response.html);
-                    total += order.total_amount * response.tour.price;
-                    $('#cart_total').text(total);
-                });
-            });
+        function deleteCart(rowId) {
+            var form = $('#cart-delete-form');
+            form.find('input[name="rowId"]').val(rowId);
+            form.submit();
         }
-
-        function deleteCart(id) {
-            var orders = JSON.parse($.cookie('orders'));
-            var newOrders = [];
-            $(orders).each(function (i, order) {
-                if (order.id !== id) {
-                    newOrders.push(order);
-                }
-            });
-            $.cookie('orders', JSON.stringify(newOrders), {path: '/'});
-            updateCart();
-        }
-
-        $(function () {
-            updateCart();
-        })
     </script>
 @endsection

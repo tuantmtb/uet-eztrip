@@ -10,6 +10,11 @@
         #hero_2 {
             background: url("{{asset('img2/cover.jpg')}}")
         }
+
+        button:disabled, button:disabled:hover, button:disabled:focus {
+            background-color: #565a5c;
+            cursor: not-allowed;
+        }
     </style>
 @endsection
 
@@ -21,19 +26,25 @@
 
                 <div class="col-xs-4 bs-wizard-step active">
                     <div class="text-center bs-wizard-stepnum">Your cart</div>
-                    <div class="progress"><div class="progress-bar"></div></div>
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
                     <a href="cart.html" class="bs-wizard-dot"></a>
                 </div>
 
                 <div class="col-xs-4 bs-wizard-step disabled">
                     <div class="text-center bs-wizard-stepnum">Your details</div>
-                    <div class="progress"><div class="progress-bar"></div></div>
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
                     <a href="payment.html" class="bs-wizard-dot"></a>
                 </div>
 
                 <div class="col-xs-4 bs-wizard-step disabled">
                     <div class="text-center bs-wizard-stepnum">Finish!</div>
-                    <div class="progress"><div class="progress-bar"></div></div>
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
                     <a href="confirmation.html" class="bs-wizard-dot"></a>
                 </div>
 
@@ -57,13 +68,16 @@
                     <thead>
                     <tr>
                         <th>
-                            Item
+                            Tour
                         </th>
                         <th>
-                            Quantity
+                            Adults
                         </th>
                         <th>
-                            Discount
+                            Children
+                        </th>
+                        <th>
+                            Price
                         </th>
                         <th>
                             Total
@@ -74,212 +88,187 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>
-                            <div class="thumb_cart">
-                                <img src="img/thumb_cart_1.jpg" alt="Image">
-                            </div>
-                            <span class="item_cart">Louvre Museum tickets</span>
-                        </td>
-                        <td>
-                            <div class="numbers-row">
-                                <input type="text" value="1" id="quantity_1" class="qty2 form-control" name="quantity_1">
-                            </div>
-                        </td>
-                        <td>
-                            0%
-                        </td>
-                        <td>
-                            <strong>€24,71</strong>
-                        </td>
-                        <td class="options">
-                            <a href="#"><i class=" icon-trash"></i></a><a href="#"><i class="icon-ccw-2"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="thumb_cart">
-                                <img src="img/thumb_cart_1.jpg" alt="Image">
-                            </div>
-                            <span class="item_cart">Eiffell tour</span>
-                        </td>
-                        <td>
-                            <div class="numbers-row">
-                                <input type="text" value="0" id="quantity_2" class="qty2 form-control" name="quantity_2">
-                            </div>
-                        </td>
-                        <td>
-                            0%
-                        </td>
-                        <td>
-                            <strong>€0,0</strong>
-                        </td>
-                        <td class="options">
-                            <a href="#"><i class=" icon-trash"></i></a><a href="#"><i class="icon-ccw-2"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="thumb_cart">
-                                <img src="img/thumb_cart_1.jpg" alt="Image">
-                            </div>
-                            <span class="item_cart">Senna river Tour</span>
-                        </td>
-                        <td>
-                            <div class="numbers-row">
-                                <input type="text" value="1" id="quantity_3" class="qty2 form-control" name="quantity_3">
-                            </div>
-                        </td>
-                        <td>
-                            0%
-                        </td>
-                        <td>
-                            <strong>€24,71</strong>
-                        </td>
-                        <td class="options">
-                            <a href="#"><i class=" icon-trash"></i></a><a href="#"><i class="icon-ccw-2"></i></a>
-                        </td>
-                    </tr>
+                    @if(Cart::content()->isNotEmpty())
+                        @foreach(Cart::content() as $index => $cart)
+                            <tr>
+                                <td>
+                                    <div class="thumb_cart">
+                                        <img src="{{$cart->options->get('url_gird')}}" alt="{{$cart->name}}">
+                                    </div>
+                                    <span class="item_cart">
+                                        <a href="{{route('tour.show', $cart->id)}}">{{$cart->name}}</a>
+                                    </span>
+                                </td>
+                                <td>
+                                    {{$cart->options->get('adults')}}
+                                </td>
+                                <td>
+                                    {{$cart->options->get('children')}}
+                                </td>
+                                <td>
+                                    ${{$cart->price}}
+                                </td>
+                                <td>
+                                    <strong>${{$cart->qty * $cart->price}}</strong>
+                                </td>
+                                <td class="options">
+                                    <a href="javascript:" onclick="deleteCart('{{$cart->rowId}}')"><i
+                                                class=" icon-trash"></i></a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="6" class="text-center">
+                                You haven't book any tour! Visit {{Html::link(route('tour.lists'), 'here')}} to find
+                                your tour.
+                            </td>
+                        </tr>
+                    @endif
                     </tbody>
                 </table>
-                <table class="table table-striped options_cart">
-                    <thead>
-                    <tr>
-                        <th colspan="3">
-                            Add options / Services
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td style="width:10%">
-                            <i class="icon_set_1_icon-16"></i>
-                        </td>
-                        <td style="width:60%">
-                            Dedicated Tour guide <strong>+$34</strong>
-                        </td>
-                        <td style="width:35%">
-                            <label class="switch-light switch-ios pull-right">
-                                <input type="checkbox" name="option_1" id="option_1" checked value="">
-                                <span>
+                @if(Cart::content()->isNotEmpty())
+                    <table class="table table-striped options_cart">
+                        <thead>
+                        <tr>
+                            <th colspan="3">
+                                Add options / Services
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td style="width:10%">
+                                <i class="icon_set_1_icon-16"></i>
+                            </td>
+                            <td style="width:60%">
+                                Dedicated Tour guide <strong>+$34</strong>
+                            </td>
+                            <td style="width:35%">
+                                <label class="switch-light switch-ios pull-right">
+                                    <input type="checkbox" name="option_1" id="option_1" value="34">
+                                    <span>
                     <span>No</span>
                     <span>Yes</span>
                     </span>
-                                <a></a>
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <i class="icon_set_1_icon-26"></i>
-                        </td>
-                        <td>
-                            Pick up service <strong>+$34*</strong>
-                        </td>
-                        <td>
-                            <label class="switch-light switch-ios pull-right">
-                                <input type="checkbox" name="option_2" id="option_2" value="">
-                                <span>
+                                    <a></a>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="icon_set_1_icon-26"></i>
+                            </td>
+                            <td>
+                                Pick up service <strong>+$34*</strong>
+                            </td>
+                            <td>
+                                <label class="switch-light switch-ios pull-right">
+                                    <input type="checkbox" name="option_2" id="option_2" value="34">
+                                    <span>
                     <span>No</span>
                     <span>Yes</span>
                     </span>
-                                <a></a>
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <i class="icon_set_1_icon-71"></i>
-                        </td>
-                        <td>
-                            Insurance <strong>+$24*</strong>
-                        </td>
-                        <td>
-                            <label class="switch-light switch-ios pull-right">
-                                <input type="checkbox" name="option_3" id="option_3" value="" checked>
-                                <span>
+                                    <a></a>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="icon_set_1_icon-71"></i>
+                            </td>
+                            <td>
+                                Insurance <strong>+$24*</strong>
+                            </td>
+                            <td>
+                                <label class="switch-light switch-ios pull-right">
+                                    <input type="checkbox" name="option_3" id="option_3" value="24">
+                                    <span>
                     <span>No</span>
                     <span>Yes</span>
                     </span>
-                                <a></a>
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <i class="icon_set_1_icon-15"></i>
-                        </td>
-                        <td>
-                            Welcome bottle <strong>+$24</strong>
-                        </td>
-                        <td>
-                            <label class="switch-light switch-ios pull-right">
-                                <input type="checkbox" name="option_4" id="option_4" value="">
-                                <span>
+                                    <a></a>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="icon_set_1_icon-15"></i>
+                            </td>
+                            <td>
+                                Welcome bottle <strong>+$24</strong>
+                            </td>
+                            <td>
+                                <label class="switch-light switch-ios pull-right">
+                                    <input type="checkbox" name="option_4" id="option_4" value="24">
+                                    <span>
                     <span>No</span>
                     <span>Yes</span>
                     </span>
-                                <a></a>
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <i class="icon_set_1_icon-59"></i>
-                        </td>
-                        <td>
-                            Coffe break <strong>+$12*</strong>
-                        </td>
-                        <td>
-                            <label class="switch-light switch-ios pull-right">
-                                <input type="checkbox" name="option_5" id="option_5" value="">
-                                <span>
+                                    <a></a>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="icon_set_1_icon-59"></i>
+                            </td>
+                            <td>
+                                Coffee break <strong>+$12*</strong>
+                            </td>
+                            <td>
+                                <label class="switch-light switch-ios pull-right">
+                                    <input type="checkbox" name="option_5" id="option_5" value="12">
+                                    <span>
                     <span>No</span>
                     <span>Yes</span>
                     </span>
-                                <a></a>
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <i class="icon_set_1_icon-58"></i>
-                        </td>
-                        <td>
-                            Dinner <strong>+$26*</strong>
-                        </td>
-                        <td>
-                            <label class="switch-light switch-ios pull-right">
-                                <input type="checkbox" name="option_6" id="option_6" value="">
-                                <span>
+                                    <a></a>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="icon_set_1_icon-58"></i>
+                            </td>
+                            <td>
+                                Dinner <strong>+$26*</strong>
+                            </td>
+                            <td>
+                                <label class="switch-light switch-ios pull-right">
+                                    <input type="checkbox" name="option_6" id="option_6" value="26">
+                                    <span>
                     <span>No</span>
                     <span>Yes</span>
                     </span>
-                                <a></a>
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <i class="icon_set_1_icon-40"></i>
-                        </td>
-                        <td>
-                            Bike rent <strong>+$26*</strong>
-                        </td>
-                        <td>
-                            <label class="switch-light switch-ios pull-right">
-                                <input type="checkbox" name="option_7" id="option_7" value="">
-                                <span>
+                                    <a></a>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="icon_set_1_icon-40"></i>
+                            </td>
+                            <td>
+                                Bike rent <strong>+$26*</strong>
+                            </td>
+                            <td>
+                                <label class="switch-light switch-ios pull-right">
+                                    <input type="checkbox" name="option_7" id="option_7" value="26">
+                                    <span>
                     <span>No</span>
                     <span>Yes</span>
                     </span>
-                                <a></a>
-                            </label>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="add_bottom_15"><small>* Prices for person.</small></div>
+                                    <a></a>
+                                </label>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="add_bottom_15">
+                        <small>* Prices for person.</small>
+                    </div>
+                @endif
             </div><!-- End col-md-8 -->
 
             <aside class="col-md-4">
@@ -292,7 +281,7 @@
                                 Adults
                             </td>
                             <td class="text-right">
-                                2
+                                {{$sum_adults}}
                             </td>
                         </tr>
                         <tr>
@@ -300,23 +289,63 @@
                                 Children
                             </td>
                             <td class="text-right">
-                                0
+                                {{$sum_children}}
                             </td>
                         </tr>
-                        <tr>
+                        <tr style="display: none" id="option_1_sum">
                             <td>
                                 Dedicated tour guide
                             </td>
                             <td class="text-right">
-                                $34
+                                {{$sum_persons}}x $34
                             </td>
                         </tr>
-                        <tr>
+                        <tr style="display: none;" id="option_2_sum">
+                            <td>
+                                Pick up service
+                            </td>
+                            <td class="text-right">
+                                {{$sum_persons}}x $34
+                            </td>
+                        </tr>
+                        <tr style="display: none;" id="option_3_sum">
                             <td>
                                 Insurance
                             </td>
                             <td class="text-right">
-                                $34
+                                {{$sum_persons}}x $24
+                            </td>
+                        </tr>
+                        <tr style="display: none;" id="option_4_sum">
+                            <td>
+                                Welcome bottle
+                            </td>
+                            <td class="text-right">
+                                {{$sum_persons}}x $24
+                            </td>
+                        </tr>
+                        <tr style="display: none;" id="option_5_sum">
+                            <td>
+                                Coffee break
+                            </td>
+                            <td class="text-right">
+                                {{$sum_persons}}x $12
+                            </td>
+                        </tr>
+                        <tr style="display: none;" id="option_6_sum">
+                            <td>
+                                Dinner
+                            </td>
+                            <td class="text-right">
+                                {{$sum_persons}}x $26
+                            </td>
+                        </tr>
+                        <tr style="display: none;" id="option_7_sum">
+                            <td>
+                                Bike rent
+                            </td>
+                            <td class="text-right">
+                                {{$sum_persons}}x $26
                             </td>
                         </tr>
                         <tr class="total">
@@ -324,13 +353,17 @@
                                 Total cost
                             </td>
                             <td class="text-right">
-                                $154
+                                ${{Cart::total()}}
                             </td>
                         </tr>
                         </tbody>
                     </table>
-                    <a class="btn_full" href="payment.html">Check out</a>
-                    <a class="btn_full_outline" href="#"><i class="icon-right"></i> Continue shopping</a>
+                    @if(Cart::content()->isNotEmpty())
+                        <a href="javascript:" class="btn_full">Check out</a>
+                    @else
+                        <button class="btn_full" disabled>Check out</button>
+                    @endif
+                    <a class="btn_full_outline" href="{{route('tour.lists')}}"><i class="icon-right"></i> Continue shopping</a>
                 </div>
                 <div class="box_style_4">
                     <i class="icon_set_1_icon-57"></i>
@@ -342,5 +375,29 @@
 
         </div><!--End row -->
     </div><!--End container -->
+@endsection
 
+@section('page-level-scripts')
+    @parent
+    <script>
+        var total_cost = parseFloat('{{Cart::total()}}');
+        var sum_persons = parseInt('{{$sum_persons}}');
+
+        $(function() {
+            $('body').on('change', '.options_cart input[type="checkbox"]', function() {
+                var value = parseFloat($(this).val());
+                var name = $(this).attr('name');
+                var is_checked = $(this).is(':checked');
+                if (is_checked) {
+                    $('#' + name + '_sum').show();
+                    total_cost += value*sum_persons;
+                    $('.total').find('.text-right').text('$' + total_cost);
+                } else {
+                    $('#' + name + '_sum').hide();
+                    total_cost -= value*sum_persons;
+                    $('.total').find('.text-right').text('$' + total_cost);
+                }
+            });
+        })
+    </script>
 @endsection

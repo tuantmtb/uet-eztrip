@@ -25,3 +25,5 @@ Route::get('orders/create', 'OrderController@create')->name('order.create');
 Route::post('orders/store', 'OrderController@store')->name('order.store');
 
 Route::get('cart', 'CartController@cart')->name('cart');
+Route::post('cart/delete', 'CartController@delete')->name('cart.delete');
+Route::post('cart/add', 'CartController@add')->name('cart.add');

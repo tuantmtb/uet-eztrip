@@ -376,7 +376,7 @@
                             <div class="form-group">
                                 <label>Adults</label>
                                 <div class="numbers-row">
-                                    <input type="number" min="0" value="0" id="adults" class="qty2 form-control text-appearance" name="quantity">
+                                    <input type="number" min="1" value="1" id="adults" class="qty2 form-control text-appearance" name="quantity">
                                 </div>
                             </div>
                         </div>
@@ -398,7 +398,7 @@
                                 Adults
                             </td>
                             <td class="text-right" id="sum-adults">
-                                0
+                                1
                             </td>
                         </tr>
                         <tr>
@@ -414,7 +414,7 @@
                                 Total amount
                             </td>
                             <td class="text-right" id="total-amount">
-                                0x ${{$tour->price}}
+                                1x ${{$tour->price}}
                             </td>
                         </tr>
                         <tr class="total">
@@ -422,7 +422,7 @@
                                 Total cost
                             </td>
                             <td class="text-right" id="total-cost">
-                                $0
+                                ${{$tour->price}}
                             </td>
                         </tr>
                         </tbody>
@@ -560,6 +560,18 @@
             </div>
         </div>
     </div><!-- End modal review -->
+
+    <div hidden>
+        {{Form::open(['method' => 'post', 'route' => 'cart.add', 'id' => 'cart-add-form'])}}
+        {{Form::hidden('id')}}
+        {{Form::hidden('name')}}
+        {{Form::hidden('qty')}}
+        {{Form::hidden('price')}}
+        {{Form::hidden('url_gird')}}
+        {{Form::hidden('adults')}}
+        {{Form::hidden('children')}}
+        {{Form::close()}}
+    </div>
 @endsection
 
 
@@ -597,7 +609,7 @@
         function updateSum() {
             var adults = $('#adults');
             var children = $('#children');
-            var sumAdults = Math.abs(parseInt(adults.val())) || 0;
+            var sumAdults = Math.abs(parseInt(adults.val())) || 1;
             var sumChildren = Math.abs(parseInt(children.val())) || 0;
             var price = parseFloat('{{$tour->price}}');
             adults.val(sumAdults);
@@ -607,35 +619,30 @@
             $('#total-amount').text((sumAdults + sumChildren) + "x ${{$tour->price}}");
             $('#total-cost').text("$" + (sumAdults + sumChildren)*price);
         }
+
         $(function() {
             $('body')
                 .on('change', '#adults, #children', updateSum)
-                .on('click', '.button_inc', updateSum)
-                .on('click', '#book-now', function() {
-                    var orders = JSON.parse($.cookie('orders'));
-                    var sumAdults = Math.abs(parseInt($('#adults').val())) || 0;
-                    var sumChildren = Math.abs(parseInt($('#children').val())) || 0;
-                    var totalAmount = sumAdults + sumChildren;
+                .on('click', '.button_inc', updateSum);
 
-                    var index = null;
-                    var newOrder = {
-                        id: parseInt('{{$tour->id}}'),
-                        total_amount: totalAmount,
-                    };
-                    $(orders).each(function(i, order) {
-                        if (order.id === newOrder.id) {
-                            index = i;
-                        }
-                    });
-                    if (index === null) {
-                        orders.push(newOrder);
-                    } else {
-                        orders[index] = newOrder;
-                    }
+            $('#book-now').click(function() {
+                var form = $('#cart-add-form');
+                var sumAdults = Math.abs(parseInt($('#adults').val())) || 1;
+                var sumChildren = Math.abs(parseInt($('#children').val())) || 0;
 
-                    $.cookie('orders', JSON.stringify(orders), {path: '/'});
-                    updateCart();
-                });
+                if (sumAdults > 0) {
+                    form.find('input[name="id"]').val({{$tour->id}});
+                    form.find('input[name="name"]').val('{{$tour->name}}');
+                    form.find('input[name="qty"]').val(sumAdults + sumChildren);
+                    form.find('input[name="price"]').val({{$tour->price}});
+                    form.find('input[name="url_gird"]').val('{{$tour->url_gird}}');
+                    form.find('input[name="adults"]').val(sumAdults);
+                    form.find('input[name="children"]').val(sumChildren);
+                    form.submit();
+                } else {
+                    toastr['warning']('Please choose at least one adult', 'Number of adults must be greater than 0');
+                }
+            });
         })
     </script>
 @endsection
