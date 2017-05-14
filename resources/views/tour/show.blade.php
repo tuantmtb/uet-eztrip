@@ -54,7 +54,7 @@
                         <li><i class="icon_set_1_icon-82"></i>144 Likes</li>
                         <li><i class="icon_set_1_icon-22"></i>Pet allowed</li>
                         <li><i class="icon_set_1_icon-97"></i>Audio guide</li>
-                        <li><i class="icon_set_1_icon-29"></i>Tour guide</li>
+                        <li><i class="icon_set_1_icon-29"></i>{{$tour->tourguide->name}}</li>
                     </ul>
                 </div>
 
