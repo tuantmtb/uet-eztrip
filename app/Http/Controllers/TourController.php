@@ -9,7 +9,8 @@ use Kris\LaravelFormBuilder\FormBuilder;
 
 class TourController extends Controller
 {
-    public function create(FormBuilder $formBuilder) {
+    public function create(FormBuilder $formBuilder)
+    {
         $form = $formBuilder->create(TourForm::class, [
             'method' => 'POST',
             'url' => route('tour.store'),
@@ -18,7 +19,8 @@ class TourController extends Controller
         return view('tour.create', compact('form'));
     }
 
-    public function store(FormBuilder $formBuilder) {
+    public function store(FormBuilder $formBuilder)
+    {
         $form = $formBuilder->create(TourForm::class);
 
         if (!$form->isValid()) {
@@ -28,5 +30,10 @@ class TourController extends Controller
         Tour::create($form->getRequest()->all());
 
         return redirect()->route('home');
+    }
+
+    public function show($id)
+    {
+        return view('tour.show');
     }
 }

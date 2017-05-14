@@ -32,6 +32,7 @@ class CreateToursTable extends Migration
 
             $table->timestamps();
         });
+
     }
 
     /**
