@@ -1,4 +1,11 @@
 @extends('layouts.base')
+@section('page-level-styles')
+    <style>
+        header {
+            background-color: #3c9faa
+        }
+    </style>
+@endsection
 
 @section('body')
 
@@ -16,7 +23,7 @@
     <div class="layer"></div>
     <!-- Mobile menu overlay mask -->
 
-    <header class="sticky">
+    <header style="">
         <div id="top_line">
             <div class="container">
                 <div class="row">
@@ -255,7 +262,7 @@
                 $.ajax({
                     method: 'get',
                     url: '{{route('api.tour.cartItem')}}?id=' + order.id + '&total_amount=' + order.total_amount
-                }).done(function(response) {
+                }).done(function (response) {
                     cart_items.prepend(response.html);
                     total += order.total_amount * response.tour.price;
                     $('#cart_total').text(total);
