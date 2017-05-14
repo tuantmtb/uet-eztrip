@@ -9,7 +9,8 @@
                 <li data-transition="fade" data-slotamount="7" data-masterspeed="500" data-saveperformance="on"
                     data-title="Intro Slide">
                     <!-- MAIN IMAGE -->
-                    <img src="{{asset('img/slides_bg/dummy.png')}}" alt="slidebg1" data-lazyload="{{asset('img2/cover.jpg')}}"
+                    <img src="{{asset('img/slides_bg/dummy.png')}}" alt="slidebg1"
+                         data-lazyload="{{asset('img2/cover.jpg')}}"
                          data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
                     <!-- LAYER NR. 1 -->
                     <div class="tp-caption white_heavy_40 customin customout text-center text-uppercase" data-x="center"
@@ -45,7 +46,8 @@
                 <li data-transition="fade" data-slotamount="7" data-masterspeed="500" data-saveperformance="on"
                     data-title="Intro Slide">
                     <!-- MAIN IMAGE -->
-                    <img src="{{asset('img/slides_bg/dummy.png')}}" alt="slidebg1" data-lazyload="{{asset('img2/cover.jpg')}}"
+                    <img src="{{asset('img/slides_bg/dummy.png')}}" alt="slidebg1"
+                         data-lazyload="{{asset('img2/cover.jpg')}}"
                          data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
                     <!-- LAYER NR. 1 -->
                     <div class="tp-caption white_heavy_40 customin customout text-center text-uppercase" data-x="center"
@@ -82,7 +84,8 @@
                 <li data-transition="fade" data-slotamount="7" data-masterspeed="500" data-saveperformance="on"
                     data-title="Intro Slide">
                     <!-- MAIN IMAGE -->
-                    <img src="{{asset('img/slides_bg/dummy.png')}}" alt="slidebg1" data-lazyload="{{asset('img2/cover.jpg')}}"
+                    <img src="{{asset('img/slides_bg/dummy.png')}}" alt="slidebg1"
+                         data-lazyload="{{asset('img2/cover.jpg')}}"
                          data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
                     <!-- LAYER NR. 1 -->
                     <div class="tp-caption white_heavy_40 customin customout text-center text-uppercase" data-x="center"
@@ -119,7 +122,8 @@
                 <li data-transition="fade" data-slotamount="7" data-masterspeed="500" data-saveperformance="on"
                     data-title="Intro Slide">
                     <!-- MAIN IMAGE -->
-                    <img src="{{asset('img/slides_bg/dummy.png')}}" alt="slidebg1" data-lazyload="{{asset('img2/cover.jpg')}}"
+                    <img src="{{asset('img/slides_bg/dummy.png')}}" alt="slidebg1"
+                         data-lazyload="{{asset('img2/cover.jpg')}}"
                          data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
                     <!-- LAYER NR. 1 -->
                     <div class="tp-caption white_heavy_40 customin customout text-center text-uppercase" data-x="center"
@@ -169,36 +173,35 @@
         <div class="row">
 
             @foreach($tours as $index => $tour)
-            <div class="col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.{{$index + 1}}s">
-                <div class="tour_container">
-                    <div class="ribbon_3 popular"><span>Popular</span></div>
-                    <div class="img_container">
-                        <a href="{{route('tour.show', $tour->id)}}">
-                            <img src="{{$tour->url_cover}}" class="img-responsive" alt="Image">
-                            <div class="short_info">
-                                <i class="icon_set_1_icon-44"></i>{{$tour->city}}<span
-                                        class="price"><sup>$</sup>{{$tour->price}}</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="tour_title">
-                        <h3>{{$tour->name}}</h3>
-                        <div class="rating">
-                            <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i
-                                    class="icon-smile voted"></i><i
-                                    class="icon-smile voted"></i><i class="icon-smile"></i>
-                            <small>(75)</small>
-                        </div><!-- end rating -->
-                        <div class="wishlist">
-                            <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span
-                                        class="tooltip-content-flip"><span
-                                            class="tooltip-back">Add to wishlist</span></span></a>
-                        </div><!-- End wish list-->
-                    </div>
-                </div><!-- End box tour -->
-            </div><!-- End col-md-4 -->
+                <div class="col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.{{$index + 1}}s">
+                    <div class="tour_container">
+                        <div class="ribbon_3 popular"><span>Popular</span></div>
+                        <div class="img_container">
+                            <a href="{{route('tour.show', $tour->id)}}">
+                                <img src="{{$tour->url_cover}}" class="img-responsive" alt="Image">
+                                <div class="short_info">
+                                    <i class="icon_set_1_icon-44"></i>{{$tour->city}}<span
+                                            class="price"><sup>$</sup>{{$tour->price}}</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tour_title">
+                            <h3>{{$tour->name}}</h3>
+                            <div class="rating">
+                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i
+                                        class="icon-smile voted"></i><i
+                                        class="icon-smile voted"></i><i class="icon-smile"></i>
+                                <small>(75)</small>
+                            </div><!-- end rating -->
+                            <div class="wishlist">
+                                <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span
+                                            class="tooltip-content-flip"><span
+                                                class="tooltip-back">Add to wishlist</span></span></a>
+                            </div><!-- End wish list-->
+                        </div>
+                    </div><!-- End box tour -->
+                </div><!-- End col-md-4 -->
             @endforeach
-
 
 
         </div><!-- End row -->
@@ -482,7 +485,7 @@
         </div><!-- End container -->
     </div><!-- End white_bg -->
 
-    <section class="promo_full">
+    <section class="promo_full" style="background: url(/img2/cover/6.jpg)">
         <div class="promo_full_wp magnific">
             <div>
                 <h3>Amazing destination Vietnam Tours</h3>
