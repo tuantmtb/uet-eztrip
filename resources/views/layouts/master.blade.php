@@ -122,39 +122,11 @@
                         </li>
                         <li>
                             <div class="dropdown dropdown-cart">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                            class=" icon-basket-1"></i>Tour
-                                    orders( 1 )</a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class=" icon-basket-1"></i>Tour orders <span id="cart_count"></span>
+                                </a>
                                 <ul class="dropdown-menu" id="cart_items">
-                                    <li>
-                                        <div class="image">
-                                            {{Html::image('img/thumb_cart_1.jpg', 'image')}}
-                                        </div>
-                                        <strong>
-                                            <a href="#">Louvre museum</a>1x $36.00 </strong>
-                                        <a href="#" class="action"><i class="icon-trash"></i></a>
-                                    </li>
-                                    <li>
-                                        <div class="image">
-                                            {{Html::image('img/thumb_cart_2.jpg', 'image')}}
-                                        </div>
-                                        <strong>
-                                            <a href="#">Versailles tour</a>2x $36.00 </strong>
-                                        <a href="#" class="action"><i class="icon-trash"></i></a>
-                                    </li>
-                                    <li>
-                                        <div class="image">
-                                            {{Html::image('img/thumb_cart_3.jpg', 'image')}}
-                                        </div>
-                                        <strong>
-                                            <a href="#">Versailles tour</a>1x $36.00 </strong>
-                                        <a href="#" class="action"><i class="icon-trash"></i></a>
-                                    </li>
-                                    <li>
-                                        <div>Total: <span>$120.00</span></div>
-                                        <a href="cart.html" class="button_drop">Go to cart</a>
-                                        <a href="payment.html" class="button_drop outline">Check out</a>
-                                    </li>
+
                                 </ul>
                             </div><!-- End dropdown-cart-->
                         </li>
@@ -245,4 +217,72 @@
             </div><!-- End row -->
         </div><!-- End container -->
     </footer><!-- End footer -->
+
+    <div hidden id="cart_item">
+        <input type="hidden">
+        <div class="image">
+            <img src="" alt="">
+        </div>
+        <strong>
+
+        </strong>
+        <a href="javascript:" class="action"><i class="icon-trash"></i></a>
+    </div>
+
+    <div hidden id="cart_total">
+        <div>Total: $<span></span></div>
+        <a href="cart.html" class="button_drop">Go to cart</a>
+        <a href="payment.html" class="button_drop outline">Check out</a>
+    </div>
+@endsection
+
+@section('page-level-scripts')
+    @parent
+    <script>
+        function updateCart() {
+            var cart_item = $('#cart_item');
+            var cart_items = $('#cart_items');
+            var cart_total = $('#cart_total');
+            var orders = JSON.parse($.cookie('orders'));
+            var total = 0;
+
+            console.log(orders);
+
+            $('#cart_count').text(" (" + orders.length + ")");
+            cart_items.empty();
+
+            $(orders).each(function (i, order) {
+                var show_url = '{{route('tour.show', ['id' => '_ID_'])}}'.replace('_ID_', order.id);
+                cart_item.find('input').val(order.id);
+                cart_item.find('img').attr('src', order.url_cover).attr('alt', order.name);
+                cart_item.find('strong').html('<a href="' + show_url + '">' + order.name + '</a> ' + order.total_amount + 'x $' + order.price);
+                cart_item.find('.action').attr('onclick', 'deleteCart(' + order.id + ')');
+                cart_items.append("<li>" + cart_item.html() + "</li>");
+                total += order.total_amount * order.price;
+            });
+
+            cart_total.find('span').text(total);
+            cart_items.append("<li>" + cart_total.html() + "</li>");
+        }
+
+        function deleteCart(id) {
+            var orders = JSON.parse($.cookie('orders'));
+            var newOrders = [];
+            $(orders).each(function(i, order) {
+                if (order.id !== id) {
+                    newOrders.push(order);
+                }
+            });
+            $.cookie('orders', JSON.stringify(newOrders));
+            updateCart();
+        }
+
+        $(function () {
+            if (!$.cookie('orders')) {
+                $.cookie('orders', JSON.stringify([]));
+            }
+
+            updateCart();
+        })
+    </script>
 @endsection

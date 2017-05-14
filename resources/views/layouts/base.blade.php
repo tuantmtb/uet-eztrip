@@ -57,6 +57,7 @@
     {{Html::script('js/jquery-1.11.2.min.js')}}
     {{Html::script('js/common_scripts_min.js')}}
     {{Html::script('js/functions.js')}}
+    {{Html::script('js/jquery-cookie.js')}}
 
     <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
     {{Html::script('rs-plugin/js/jquery.themepunch.tools.min.js')}}

@@ -5,6 +5,15 @@
 @section('page-level-styles')
     @parent
     {{Html::style('css/date_time_picker.css')}}
+    <style>
+        input[type=number].text-appearance::-webkit-inner-spin-button,
+        input[type=number].text-appearance::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+    </style>
 @endsection
 
 @section('page')
@@ -367,7 +376,7 @@
                             <div class="form-group">
                                 <label>Adults</label>
                                 <div class="numbers-row">
-                                    <input type="text" value="1" id="adults" class="qty2 form-control" name="quantity">
+                                    <input type="number" min="0" value="0" id="adults" class="qty2 form-control text-appearance" name="quantity">
                                 </div>
                             </div>
                         </div>
@@ -375,7 +384,7 @@
                             <div class="form-group">
                                 <label>Children</label>
                                 <div class="numbers-row">
-                                    <input type="text" value="0" id="children" class="qty2 form-control"
+                                    <input type="number" min="0" value="0" id="children" class="qty2 form-control text-appearance"
                                            name="quantity">
                                 </div>
                             </div>
@@ -388,15 +397,15 @@
                             <td>
                                 Adults
                             </td>
-                            <td class="text-right">
-                                2
+                            <td class="text-right" id="sum-adults">
+                                0
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 Children
                             </td>
-                            <td class="text-right">
+                            <td class="text-right" id="sum-children">
                                 0
                             </td>
                         </tr>
@@ -404,21 +413,21 @@
                             <td>
                                 Total amount
                             </td>
-                            <td class="text-right">
-                                3x $52
+                            <td class="text-right" id="total-amount">
+                                0x ${{$tour->price}}
                             </td>
                         </tr>
                         <tr class="total">
                             <td>
                                 Total cost
                             </td>
-                            <td class="text-right">
-                                $154
+                            <td class="text-right" id="total-cost">
+                                $0
                             </td>
                         </tr>
                         </tbody>
                     </table>
-                    <a class="btn_full" href="cart.html">Book now</a>
+                    <a class="btn_full" href="javascript:" id="book-now">Book now</a>
                     <a class="btn_full_outline" href="#"><i class=" icon-heart"></i> Add to whislist</a>
                 </div><!--/box_style_1 -->
 
@@ -555,6 +564,7 @@
 
 
 @section('page-level-scripts')
+    @parent
     <!-- Specific scripts -->
     {{Html::script('js/icheck.js')}}
     <script>
@@ -576,10 +586,60 @@
     </script>
 
     <!--Review modal validation -->
-    {{Html::script('assets/validate.js')}}
+{{--    {{Html::script('assets/validate.js')}}--}}
 
     <!-- Map -->
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     {{Html::script('js/map.js')}}
     {{Html::script('js/infobox.js')}}
+
+    <script>
+        function updateSum() {
+            var adults = $('#adults');
+            var children = $('#children');
+            var sumAdults = Math.abs(parseInt(adults.val())) || 0;
+            var sumChildren = Math.abs(parseInt(children.val())) || 0;
+            var price = parseFloat('{{$tour->price}}');
+            adults.val(sumAdults);
+            children.val(sumChildren);
+            $('#sum-adults').text(sumAdults);
+            $('#sum-children').text(sumChildren);
+            $('#total-amount').text((sumAdults + sumChildren) + "x ${{$tour->price}}");
+            $('#total-cost').text("$" + (sumAdults + sumChildren)*price);
+        }
+        $(function() {
+            $('body')
+                .on('change', '#adults, #children', updateSum)
+                .on('click', '.button_inc', updateSum)
+                .on('click', '#book-now', function() {
+                    var orders = JSON.parse($.cookie('orders'));
+                    var sumAdults = Math.abs(parseInt($('#adults').val())) || 0;
+                    var sumChildren = Math.abs(parseInt($('#children').val())) || 0;
+                    var totalAmount = sumAdults + sumChildren;
+
+                    var index = null;
+                    var newOrder = {
+                        id: parseInt('{{$tour->id}}'),
+                        name: '{{$tour->name}}',
+                        url_cover: '{{$tour->url_cover}}',
+                        total_amount: totalAmount,
+                        price: parseFloat('{{$tour->price}}')
+                    };
+                    $(orders).each(function(i, order) {
+                        if (order.id === newOrder.id) {
+                            index = i;
+                        }
+                    });
+                    if (index === null) {
+                        orders.push(newOrder);
+                    } else {
+                        orders[index] = newOrder;
+                    }
+                    console.log(orders);
+
+                    $.cookie('orders', JSON.stringify(orders));
+                    updateCart();
+                });
+        })
+    </script>
 @endsection

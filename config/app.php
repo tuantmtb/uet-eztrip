@@ -168,10 +168,8 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Spatie\CollectionMacros\CollectionMacroServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        Spatie\BladeJavaScript\BladeJavaScriptServiceProvider::class,
         Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
