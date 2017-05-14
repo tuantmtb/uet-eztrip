@@ -1,12 +1,5 @@
 @extends('layouts.base')
 
-@section('page-level-styles')
-    @parent
-    <style>
-
-    </style>
-@endsection
-
 @section('body')
 
     <div id="preloader">
@@ -78,22 +71,24 @@
             <div class="row">
                 <div class="col-md-3 col-sm-3 col-xs-3">
                     <div id="logo">
-                        <a href="index.html"><img src="img/logo.png" width="160" height="34" alt="City tours"
-                                                  data-retina="true" class="logo_normal"></a>
-                        <a href="index.html"><img src="img/logo_sticky.png" width="160" height="34" alt="City tours"
-                                                  data-retina="true" class="logo_sticky"></a>
+                        <a href="{{route('home')}}">
+                            {{Html::image('img/logo.png', 'ezTrip', ['width' => 160, 'height' => 34, 'data-retina' => true, 'class' => 'logo_normal'])}}
+                        </a>
+                        <a href="{{route('home')}}">
+                            {{Html::image('img/logo_sticky.png', 'ezTrip', ['width' => 160, 'height' => 34, 'data-retina' => true, 'class' => 'logo_sticky'])}}
+                        </a>
                     </div>
                 </div>
                 <nav class="col-md-9 col-sm-9 col-xs-9">
                     <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
                     <div class="main-menu">
                         <div id="header_menu">
-                            <img src="img/logo_sticky.png" width="160" height="34" alt="City tours" data-retina="true">
+                            {{Html::image('img/logo_sticky.png', 'ezTrip', ['width' => 160, 'height' => 34, 'data-retina' => true])}}
                         </div>
                         <a href="#" class="open_close" id="close_in"><i class="icon_set_1_icon-77"></i></a>
                         <ul>
                             <li class="submenu">
-                                <a href="javascript:void(0);" class="show-submenu">Home</a>
+                                <a href="{{route('home')}}" class="show-submenu">Home</a>
                             </li>
                             <li class="submenu">
                                 <a href="javascript:void(0);" class="show-submenu">Tours <i
@@ -132,19 +127,25 @@
                                     orders( 1 )</a>
                                 <ul class="dropdown-menu" id="cart_items">
                                     <li>
-                                        <div class="image"><img src="img/thumb_cart_1.jpg" alt="image"></div>
+                                        <div class="image">
+                                            {{Html::image('img/thumb_cart_1.jpg', 'image')}}
+                                        </div>
                                         <strong>
                                             <a href="#">Louvre museum</a>1x $36.00 </strong>
                                         <a href="#" class="action"><i class="icon-trash"></i></a>
                                     </li>
                                     <li>
-                                        <div class="image"><img src="img/thumb_cart_2.jpg" alt="image"></div>
+                                        <div class="image">
+                                            {{Html::image('img/thumb_cart_2.jpg', 'image')}}
+                                        </div>
                                         <strong>
                                             <a href="#">Versailles tour</a>2x $36.00 </strong>
                                         <a href="#" class="action"><i class="icon-trash"></i></a>
                                     </li>
                                     <li>
-                                        <div class="image"><img src="img/thumb_cart_3.jpg" alt="image"></div>
+                                        <div class="image">
+                                            {{Html::image('img/thumb_cart_3.jpg', 'image')}}
+                                        </div>
                                         <strong>
                                             <a href="#">Versailles tour</a>1x $36.00 </strong>
                                         <a href="#" class="action"><i class="icon-trash"></i></a>
@@ -163,6 +164,9 @@
         </div><!-- container -->
     </header><!-- End Header -->
 
+    <div id="toTop"></div><!-- Back to top button -->
+    <div id="overlay"></div><!-- Mask on input focus -->
+
     <main>
         <div class="page-container">
             <div class="page-content-wrapper">
@@ -170,6 +174,10 @@
             </div>
         </div>
     </main>
+
+    <div id="toTop"></div><!-- Back to top button -->
+    <div id="overlay"></div><!-- Mask on input focus -->
+
     <footer>
         <div class="container">
             <div class="row">
@@ -237,9 +245,4 @@
             </div><!-- End row -->
         </div><!-- End container -->
     </footer><!-- End footer -->
-@endsection
-
-@section('page-level-scripts')
-    @parent
-
 @endsection

@@ -13,10 +13,10 @@
     <title>@yield('title', config('app.name'))</title>
 
     <!-- BASE CSS -->
-    <link href="css/base.css" rel="stylesheet">
+    {{Html::style('css/base.css')}}
 
     <!-- SPECIFIC CSS -->
-    <link href="css/shop.css" rel="stylesheet">
+    {{Html::style('css/shop.css')}}
 
 
     <!-- Google web fonts -->
@@ -25,18 +25,18 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 
     <!-- REVOLUTION SLIDER CSS -->
-    <link href="rs-plugin/css/settings.css" rel="stylesheet">
-    <link href="css/extralayers.css" rel="stylesheet">
+    {{Html::style('rs-plugin/css/settings.css')}}
+    {{Html::style('css/extralayers.css')}}
 
 
     <!-- Range slider -->
-    <link href="css/ion.rangeSlider.css" rel="stylesheet">
-    <link href="css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+    {{Html::style('css/ion.rangeSlider.css')}}
+    {{Html::style('css/ion.rangeSlider.skinFlat.css')}}
 
 
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.min.js"></script>
-    <script src="js/respond.min.js"></script>
+    {{Html::style('js/html5shiv.min.js')}}
+    {{Html::style('js/respond.min.js')}}
     <![endif]-->
 
     @yield('page-level-styles')
@@ -53,14 +53,14 @@
 
 @section('core-plugins')
     <!-- Common scripts -->
-    <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="js/common_scripts_min.js"></script>
-    <script src="js/functions.js"></script>
+    {{Html::script('js/jquery-1.11.2.min.js')}}
+    {{Html::script('js/common_scripts_min.js')}}
+    {{Html::script('js/functions.js')}}
 
     <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-    <script src="rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-    <script src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-    <script src="js/revolution_func.js"></script>
+    {{Html::script('rs-plugin/js/jquery.themepunch.tools.min.js')}}
+    {{Html::script('rs-plugin/js/jquery.themepunch.revolution.min.js')}}
+    {{Html::script('js/revolution_func.js')}}
 @show
 
 @yield('page-level-scripts')

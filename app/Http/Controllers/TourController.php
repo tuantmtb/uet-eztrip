@@ -34,6 +34,7 @@ class TourController extends Controller
 
     public function show($id)
     {
-        return view('tour.show');
+        $tour = Tour::findOrFail($id);
+        return view('tour.show', compact('tour'));
     }
 }

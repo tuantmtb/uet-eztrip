@@ -173,6 +173,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Spatie\BladeJavaScript\BladeJavaScriptServiceProvider::class,
         Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -234,6 +235,8 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];

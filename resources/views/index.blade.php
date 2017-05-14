@@ -38,7 +38,7 @@
                          data-speed="500" data-start="2900" data-easing="Power3.easeInOut" data-splitin="none"
                          data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-linktoslide="next"
                          style="z-index: 12;"><a href='all_tour_list.html' class="button_intro">View tours</a> <a
-                                href='single_tour.html' class=" button_intro outline">Read more</a>
+                                href='{{route('tour.show', ['id' => 1])}}' class=" button_intro outline">Read more</a>
                     </div>
                 </li>
                 <!-- SLIDE  -->
@@ -74,7 +74,7 @@
                          data-speed="500" data-start="2900" data-easing="Power3.easeInOut" data-splitin="none"
                          data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-linktoslide="next"
                          style="z-index: 12;"><a href='all_tour_list.html' class="button_intro">View tours</a> <a
-                                href='single_tour.html' class=" button_intro outline">Read more</a>
+                                href='{{route('tour.show', ['id' => 1])}}' class=" button_intro outline">Read more</a>
                     </div>
                 </li>
 
@@ -111,7 +111,7 @@
                          data-speed="500" data-start="2900" data-easing="Power3.easeInOut" data-splitin="none"
                          data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-linktoslide="next"
                          style="z-index: 12;"><a href='all_tour_list.html' class="button_intro">View tours</a> <a
-                                href='single_tour.html' class=" button_intro outline">Read more</a>
+                                href='{{route('tour.show', ['id' => 1])}}' class=" button_intro outline">Read more</a>
                     </div>
                 </li>
 
@@ -149,7 +149,7 @@
                          data-speed="500" data-start="2900" data-easing="Power3.easeInOut" data-splitin="none"
                          data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-linktoslide="next"
                          style="z-index: 12;"><a href='all_tour_list.html' class="button_intro">View tours</a> <a
-                                href='single_tour.html' class=" button_intro outline">Read more</a>
+                                href='{{route('tour.show', ['id' => 1])}}' class=" button_intro outline">Read more</a>
                     </div>
                 </li>
 
@@ -172,7 +172,7 @@
                 <div class="tour_container">
                     <div class="ribbon_3 popular"><span>Popular</span></div>
                     <div class="img_container">
-                        <a href="single_tour.html">
+                        <a href="{{route('tour.show', ['id' => 1])}}">
                             <img src="img/tour_box_1.jpg" class="img-responsive" alt="Image">
                             <div class="short_info">
                                 <i class="icon_set_1_icon-44"></i>Historic Buildings<span
@@ -201,7 +201,7 @@
                 <div class="tour_container">
                     <div class="ribbon_3 popular"><span>Popular</span></div>
                     <div class="img_container">
-                        <a href="single_tour.html">
+                        <a href="{{route('tour.show', ['id' => 1])}}">
                             <img src="img/tour_box_2.jpg" width="800" height="533" class="img-responsive" alt="Image">
                             <div class="badge_save">Save<strong>30%</strong></div>
                             <div class="short_info">
@@ -230,7 +230,7 @@
                 <div class="tour_container">
                     <div class="ribbon_3 popular"><span>Popular</span></div>
                     <div class="img_container">
-                        <a href="single_tour.html">
+                        <a href="{{route('tour.show', ['id' => 1])}}">
                             <img src="img/tour_box_3.jpg" width="800" height="533" class="img-responsive" alt="Image">
                             <div class="short_info">
                                 <i class="icon_set_1_icon-44"></i>Historic Buildings<span
@@ -259,7 +259,7 @@
                 <div class="tour_container">
                     <div class="ribbon_3"><span>Top rated</span></div>
                     <div class="img_container">
-                        <a href="single_tour.html">
+                        <a href="{{route('tour.show', ['id' => 1])}}">
                             <img src="img/tour_box_4.jpg" width="800" height="533" class="img-responsive" alt="Image">
                             <div class="badge_save">Save<strong>30%</strong></div>
                             <div class="short_info">
@@ -288,7 +288,7 @@
                 <div class="tour_container">
                     <div class="ribbon_3"><span>Top rated</span></div>
                     <div class="img_container">
-                        <a href="single_tour.html">
+                        <a href="{{route('tour.show', ['id' => 1])}}">
                             <img src="img/tour_box_14.jpg" width="800" height="533" class="img-responsive" alt="Image">
                             <div class="short_info">
                                 <i class="icon_set_1_icon-28"></i>Skyline tours<span class="price"><sup>$</sup>42</span>
@@ -316,7 +316,7 @@
                 <div class="tour_container">
                     <div class="ribbon_3"><span>Top rated</span></div>
                     <div class="img_container">
-                        <a href="single_tour.html">
+                        <a href="{{route('tour.show', ['id' => 1])}}">
                             <img src="img/tour_box_5.jpg" width="800" height="533" class="img-responsive" alt="Image">
                             <div class="short_info">
                                 <i class="icon_set_1_icon-44"></i>Historic Buildings<span
@@ -345,7 +345,7 @@
                 <div class="tour_container">
                     <div class="ribbon_3"><span>Top rated</span></div>
                     <div class="img_container">
-                        <a href="single_tour.html">
+                        <a href="{{route('tour.show', ['id' => 1])}}">
                             <img src="img/tour_box_8.jpg" width="800" height="533" class="img-responsive" alt="Image">
                             <div class="short_info">
                                 <i class="icon_set_1_icon-3"></i>City sightseeing<span
@@ -374,7 +374,7 @@
                 <div class="tour_container">
                     <div class="ribbon_3"><span>Top rated</span></div>
                     <div class="img_container">
-                        <a href="single_tour.html">
+                        <a href="{{route('tour.show', ['id' => 1])}}">
                             <img src="img/tour_box_9.jpg" width="800" height="533" class="img-responsive" alt="Image">
                             <div class="short_info">
                                 <i class="icon_set_1_icon-4"></i>Museums<span class="price"><sup>$</sup>38</span>
@@ -402,7 +402,7 @@
                 <div class="tour_container">
                     <div class="ribbon_3"><span>Top rated</span></div>
                     <div class="img_container">
-                        <a href="single_tour.html">
+                        <a href="{{route('tour.show', ['id' => 1])}}">
                             <img src="img/tour_box_12.jpg" width="800" height="533" class="img-responsive" alt="Image">
                             <div class="short_info">
                                 <i class="icon_set_1_icon-14"></i>Eat &amp; drink<span
@@ -448,7 +448,7 @@
                 <p>
                     Shown the secrets of your destination that no tourist knows
                 </p>
-                <a href="single_tour.html" class="btn_1 white">Read more</a>
+                <a href="{{route('tour.show', ['id' => 1])}}" class="btn_1 white">Read more</a>
             </div>
             <div class="row">
                 <div class="main_title">
