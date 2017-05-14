@@ -22,8 +22,7 @@ class TourSeeder extends Seeder
             'url_cover' => 'https://triip.imgix.net/triips/images/1232/1269/3e54b1da204511e3a792f20cfe3c2acb.jpg?crop=faces&fit=crop',
             'url_gird' => 'https://triip.imgix.net/triips/images/21386/23160/9f163f8e316711e7bcce4eba7c8cbe05_1920x1080.jpg?dpr=2&q=50&w=490',
             'tourguide_id' => 4
-            
-
         ]);
+
     }
 }
