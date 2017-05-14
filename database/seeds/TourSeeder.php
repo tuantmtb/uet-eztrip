@@ -20,8 +20,8 @@ class TourSeeder extends Seeder
                 'city' => 'Hanoi',
                 'price' => '22',
                 'time_duration' => 3,
-                'url_cover' => 'http://localhost:8000/img2/cover/' . $i . '.jpg',
-                'url_gird' => 'http://localhost:8000/img2/cover/' . 8 - $i . '.jpg',
+                'url_cover' => Config::get('app.url') . '/img2/cover/' . $i . '.jpg',
+                'url_gird' => Config::get('app.url') . '/img2/cover/' . (8 - $i) . '.jpg',
                 'tourguide_id' => 4
             ]);
         }
