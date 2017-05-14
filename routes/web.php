@@ -11,7 +11,7 @@
 |
 */
 
-//Auth::routes();
+Auth::routes();
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
@@ -24,6 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('tours/create', 'TourController@create')->name('tour.create');
 Route::post('tours/store', 'TourController@store')->name('tour.store');
+Route::get('tours/lists', 'TourController@lists')->name('tour.lists');
 Route::get('tours/{id}', 'TourController@show')->name('tour.show');
 
 Route::get('orders/create', 'OrderController@create')->name('order.create');

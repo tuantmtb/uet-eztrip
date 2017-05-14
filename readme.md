@@ -24,9 +24,7 @@ Jquery
       
 2. Config file .env
        Constant view .env.example
-        
         - Config database
-
 
 3. Install
 

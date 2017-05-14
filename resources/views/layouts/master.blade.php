@@ -16,7 +16,7 @@
     <div class="layer"></div>
     <!-- Mobile menu overlay mask -->
 
-    <header>
+    <header class="sticky">
         <div id="top_line">
             <div class="container">
                 <div class="row">
@@ -106,8 +106,8 @@
                                 <a href="javascript:void(0);" class="show-submenu">Tours <i
                                             class="icon-down-open-mini"></i></a>
                                 <ul>
-                                    <li><a href="all_tours_list.html">Ha Noi</a></li>
-                                    <li><a href="all_tours_grid.html">Ho Chi Minh</a></li>
+                                    <li><a href="{{route('tour.lists')}}">Ha Noi</a></li>
+                                    <li><a href="{{route('tour.lists')}}">Ho Chi Minh</a></li>
                                 </ul>
                             </li>
 
@@ -264,7 +264,7 @@
         function deleteCart(id) {
             var orders = JSON.parse($.cookie('orders'));
             var newOrders = [];
-            $(orders).each(function(i, order) {
+            $(orders).each(function (i, order) {
                 if (order.id !== id) {
                     newOrders.push(order);
                 }

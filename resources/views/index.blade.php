@@ -485,7 +485,7 @@
         </div><!-- End container -->
     </div><!-- End white_bg -->
 
-    <section class="promo_full" style="background: url(/img2/cover/6.jpg)">
+    <section class="promo_full" style="background: url({{Config::get('app.url')}}/img2/cover/6.jpg)">
         <div class="promo_full_wp magnific">
             <div>
                 <h3>Amazing destination Vietnam Tours</h3>
