@@ -71,10 +71,7 @@
                             Tour
                         </th>
                         <th>
-                            Adults
-                        </th>
-                        <th>
-                            Children
+                            Number of people
                         </th>
                         <th>
                             Price
@@ -100,10 +97,7 @@
                                     </span>
                                 </td>
                                 <td>
-                                    {{$cart->options->get('adults')}}
-                                </td>
-                                <td>
-                                    {{$cart->options->get('children')}}
+                                    {{$cart->qty}}
                                 </td>
                                 <td>
                                     ${{$cart->price}}
@@ -278,18 +272,10 @@
                         <tbody>
                         <tr>
                             <td>
-                                Adults
+                                Number of people
                             </td>
                             <td class="text-right">
-                                {{$sum_adults}}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Children
-                            </td>
-                            <td class="text-right">
-                                {{$sum_children}}
+                                {{$sum_persons}}
                             </td>
                         </tr>
                         <tr style="display: none" id="option_1_sum">

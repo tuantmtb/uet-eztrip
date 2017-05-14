@@ -372,20 +372,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 col-sm-6">
+                        <div class="col-md-12 col-sm-12">
                             <div class="form-group">
-                                <label>Adults</label>
+                                <label>Number of people</label>
                                 <div class="numbers-row">
-                                    <input type="number" min="1" value="1" id="adults" class="qty2 form-control text-appearance" name="quantity">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-group">
-                                <label>Children</label>
-                                <div class="numbers-row">
-                                    <input type="number" min="0" value="0" id="children" class="qty2 form-control text-appearance"
-                                           name="quantity">
+                                    <input type="number" min="1" value="1" id="num_people" class="qty2 form-control text-appearance" name="quantity">
                                 </div>
                             </div>
                         </div>
@@ -395,26 +386,18 @@
                         <tbody>
                         <tr>
                             <td>
-                                Adults
+                                Number of people
                             </td>
-                            <td class="text-right" id="sum-adults">
+                            <td class="text-right" id="num_people_val">
                                 1
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Children
+                                Price
                             </td>
-                            <td class="text-right" id="sum-children">
-                                0
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Total amount
-                            </td>
-                            <td class="text-right" id="total-amount">
-                                1x ${{$tour->price}}
+                            <td class="text-right" id="price">
+                                ${{$tour->price}}
                             </td>
                         </tr>
                         <tr class="total">
@@ -568,8 +551,6 @@
         {{Form::hidden('qty')}}
         {{Form::hidden('price')}}
         {{Form::hidden('url_gird')}}
-        {{Form::hidden('adults')}}
-        {{Form::hidden('children')}}
         {{Form::close()}}
     </div>
 @endsection
@@ -607,17 +588,12 @@
 
     <script>
         function updateSum() {
-            var adults = $('#adults');
-            var children = $('#children');
-            var sumAdults = Math.abs(parseInt(adults.val())) || 1;
-            var sumChildren = Math.abs(parseInt(children.val())) || 0;
+            var numPeople = $('#num_people');
+            var numPeopleVal = Math.abs(parseInt(numPeople.val())) || 1;
             var price = parseFloat('{{$tour->price}}');
-            adults.val(sumAdults);
-            children.val(sumChildren);
-            $('#sum-adults').text(sumAdults);
-            $('#sum-children').text(sumChildren);
-            $('#total-amount').text((sumAdults + sumChildren) + "x ${{$tour->price}}");
-            $('#total-cost').text("$" + (sumAdults + sumChildren)*price);
+            numPeople.val(numPeopleVal);
+            $('#num_people_val').text(numPeopleVal);
+            $('#total-cost').text("$" + numPeopleVal*price);
         }
 
         $(function() {
@@ -627,20 +603,17 @@
 
             $('#book-now').click(function() {
                 var form = $('#cart-add-form');
-                var sumAdults = Math.abs(parseInt($('#adults').val())) || 1;
-                var sumChildren = Math.abs(parseInt($('#children').val())) || 0;
+                var numPeopleVal = Math.abs(parseInt($('#num_people').val())) || 1;
 
-                if (sumAdults > 0) {
+                if (numPeopleVal > 0) {
                     form.find('input[name="id"]').val({{$tour->id}});
                     form.find('input[name="name"]').val('{{$tour->name}}');
-                    form.find('input[name="qty"]').val(sumAdults + sumChildren);
+                    form.find('input[name="qty"]').val(numPeopleVal);
                     form.find('input[name="price"]').val({{$tour->price}});
                     form.find('input[name="url_gird"]').val('{{$tour->url_gird}}');
-                    form.find('input[name="adults"]').val(sumAdults);
-                    form.find('input[name="children"]').val(sumChildren);
                     form.submit();
                 } else {
-                    toastr['warning']('Please choose at least one adult', 'Number of adults must be greater than 0');
+                    toastr['warning']('Please choose at least one people', 'Number of people must be greater than 0');
                 }
             });
         })

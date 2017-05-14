@@ -8,11 +8,9 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     public function cart() {
-        $sum_adults = \Cart::content()->pluck('options.adults')->sum();
-        $sum_children = \Cart::content()->pluck('options.children')->sum();
         $sum_persons = \Cart::content()->pluck('qty')->sum();
 
-        return view('cart.cart', compact('sum_adults', 'sum_children', 'sum_persons'));
+        return view('cart.cart', compact('sum_persons'));
     }
 
     public function delete(Request $request) {
@@ -26,7 +24,7 @@ class CartController extends Controller
         $name = $request->get('name');
         $qty = $request->get('qty');
         $price = $request->get('price');
-        $options = $request->only('url_gird', 'adults', 'children');
+        $options = $request->only('url_gird');
         if (\Cart::content()->keyBy('id')->has($id)) {
             \Session::flash('toastr', [
                 'level' => 'warning',
