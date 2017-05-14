@@ -38,7 +38,7 @@
                          data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
                          data-speed="500" data-start="2900" data-easing="Power3.easeInOut" data-splitin="none"
                          data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-linktoslide="next"
-                         style="z-index: 12;"><a href='all_tour_list.html' class="button_intro">View tours</a> <a
+                         style="z-index: 12;"><a href='{{route('tour.lists')}}' class="button_intro">View tours</a> <a
                                 href='{{route('tour.show', ['id' => 1])}}' class=" button_intro outline">Read more</a>
                     </div>
                 </li>
@@ -75,7 +75,7 @@
                          data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
                          data-speed="500" data-start="2900" data-easing="Power3.easeInOut" data-splitin="none"
                          data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-linktoslide="next"
-                         style="z-index: 12;"><a href='all_tour_list.html' class="button_intro">View tours</a> <a
+                         style="z-index: 12;"><a href='{{route('tour.lists')}}' class="button_intro">View tours</a> <a
                                 href='{{route('tour.show', ['id' => 1])}}' class=" button_intro outline">Read more</a>
                     </div>
                 </li>
@@ -113,7 +113,7 @@
                          data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
                          data-speed="500" data-start="2900" data-easing="Power3.easeInOut" data-splitin="none"
                          data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-linktoslide="next"
-                         style="z-index: 12;"><a href='all_tour_list.html' class="button_intro">View tours</a> <a
+                         style="z-index: 12;"><a href='{{route('tour.lists')}}' class="button_intro">View tours</a> <a
                                 href='{{route('tour.show', ['id' => 1])}}' class=" button_intro outline">Read more</a>
                     </div>
                 </li>
@@ -152,7 +152,7 @@
                          data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
                          data-speed="500" data-start="2900" data-easing="Power3.easeInOut" data-splitin="none"
                          data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-linktoslide="next"
-                         style="z-index: 12;"><a href='all_tour_list.html' class="button_intro">View tours</a> <a
+                         style="z-index: 12;"><a href='{{route('tour.lists')}}' class="button_intro">View tours</a> <a
                                 href='{{route('tour.show', ['id' => 1])}}' class=" button_intro outline">Read more</a>
                     </div>
                 </li>
@@ -551,7 +551,7 @@
                     <li><span>2</span>Purchase tickets and options</li>
                     <li><span>3</span>Made your trip more beautiful</li>
                 </ul>
-                <a href="all_tour_list.html" class="btn_1">Start now</a>
+                <a href="{{route('tour.lists')}}" class="btn_1">Start now</a>
             </div>
         </div><!-- End row -->
 

@@ -269,7 +269,7 @@
                     newOrders.push(order);
                 }
             });
-            $.cookie('orders', JSON.stringify(newOrders));
+            $.cookie('orders', JSON.stringify(newOrders), {path: '/'});
             updateCart();
         }
 

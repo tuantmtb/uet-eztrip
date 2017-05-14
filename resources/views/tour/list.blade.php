@@ -2,10 +2,7 @@
 
 @section('page-level-styles')
     @parent
-    {{Html::style('css/date_time_picker.css')}}
-    <style>
-
-    </style>
+    <link href="{{asset('css/skins/square/grey.css')}}" rel="stylesheet">
 @endsection
 
 @section('page')
@@ -17,6 +14,11 @@
             </div>
         </div>
     </section><!-- End section -->
+
+    <div class="collapse" id="collapseMap">
+        <div id="map" class="map"></div>
+    </div><!-- End Map -->
+
     <div class="container margin_60">
 
         <div class="row">
@@ -125,8 +127,8 @@
                     </div>
                 </div><!--/tools -->
 
-                @foreach($tours as $tour)
-                    <div class="strip_all_tour_list wow fadeIn" data-wow-delay="0.1s">
+                @foreach($tours as $index => $tour)
+                    <div class="strip_all_tour_list wow fadeIn" data-wow-delay="0.{{$index + 1}}s">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <div class="ribbon_3 popular"><span>Popular</span></div>
@@ -135,9 +137,9 @@
                                                 class="tooltip-content-flip"><span
                                                     class="tooltip-back">Add to wishlist</span></span></a>
                                 </div>
-                                <div class="img_list"><a href="single_tour.html"><img src="{{$tour->url_gird}}"
+                                <div class="img_list"><a href="{{route('tour.show', $tour->id)}}"><img src="{{$tour->url_gird}}"
                                                                                       alt="Image">
-                                        <div class="short_info"><i class="icon_set_1_icon-4"></i>Museums</div>
+                                        <div class="short_info"><i class="icon_set_1_icon-4"></i>{{$tour->city}}</div>
                                     </a>
                                 </div>
                             </div>
@@ -151,10 +153,7 @@
                                         <small>(75)</small>
                                     </div>
                                     <h3>{{$tour->name}}</h3>
-                                    <p>Lorem ipsum dolor sit amet, quem convenire interesset ut vix, ad dicat sanctus
-                                        detracto
-                                        vis. Eos modus dolorum ex, qui adipisci maiestatis inciderint no, eos in elit
-                                        dicat.....</p>
+                                    <p>{{str_limit(strip_tags($tour->description), 300)}}</p>
                                     <ul class="add_info">
                                         <li>
                                             <div class="tooltip_styled tooltip-effect-4">
@@ -171,7 +170,7 @@
                                             <div class="tooltip_styled tooltip-effect-4">
                                                 <span class="tooltip-item"><i class="icon_set_1_icon-41"></i></span>
                                                 <div class="tooltip-content"><h4>Address</h4>
-                                                    Musée du Louvre, 75058 Paris - France<br>
+                                                    {{$tour->place}}, {{$tour->city}}<br>
                                                 </div>
                                             </div>
                                         </li>
@@ -207,9 +206,9 @@
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2">
                                 <div class="price_list">
-                                    <div><sup>$</sup>39*<span class="normal_price_list">$99</span>
+                                    <div><sup>$</sup>{{$tour->price}}*<span class="normal_price_list">$99</span>
                                         <small>*Per person</small>
-                                        <p><a href="single_tour.html" class="btn_1">Details</a></p>
+                                        <p><a href="{{route('tour.show', $tour->id)}}" class="btn_1">Details</a></p>
                                     </div>
 
                                 </div>
@@ -237,6 +236,19 @@
     </div><!-- End container -->
 @endsection
 
+@section('page-level-scripts')
+    @parent
+    <!-- Specific scripts -->
+    {{Html::script('js/icheck.js')}}
+    <script>
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-grey',
+            radioClass: 'iradio_square-grey'
+        });
+    </script>
 
-
-
+    <!-- Map -->
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCUNwUy389-GS3hRhjAoXogLTwwntRQl6A"></script>
+    {{Html::script('js/map.js')}}
+    {{Html::script('js/infobox.js')}}
+@endsection

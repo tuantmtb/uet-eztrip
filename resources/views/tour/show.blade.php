@@ -14,6 +14,7 @@
             margin: 0;
         }
     </style>
+    <link href="{{asset('css/skins/square/grey.css')}}" rel="stylesheet">
 @endsection
 
 @section('page')
@@ -589,7 +590,7 @@
 {{--    {{Html::script('assets/validate.js')}}--}}
 
     <!-- Map -->
-    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCUNwUy389-GS3hRhjAoXogLTwwntRQl6A"></script>
     {{Html::script('js/map.js')}}
     {{Html::script('js/infobox.js')}}
 
@@ -632,9 +633,8 @@
                     } else {
                         orders[index] = newOrder;
                     }
-                    console.log(orders);
 
-                    $.cookie('orders', JSON.stringify(orders));
+                    $.cookie('orders', JSON.stringify(orders), '');
                     updateCart();
                 });
         })

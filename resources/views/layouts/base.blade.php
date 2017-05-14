@@ -44,7 +44,10 @@
 
     @section('scripts-top')
         <script>
-            window.Laravel = {csrfToken: '{{csrf_token()}}'};
+            window.Laravel = {
+                csrfToken: '{{csrf_token()}}',
+                appUrl: '{{route('index')}}'
+            };
         </script>
     @show
 </head>
