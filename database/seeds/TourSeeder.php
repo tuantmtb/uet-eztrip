@@ -22,7 +22,7 @@ class TourSeeder extends Seeder
                 'price' => '22',
                 'time_duration' => 3,
                 'url_cover' => Config::get('app.url') . '/img2/cover/' . $i . '.jpg',
-                'url_gird' => Config::get('app.url') . '/img2/cover/' . $num . '.jpg',
+                'url_gird' => Config::get('app.url') . '/img2/cover/' . $i . '-800.jpg',
                 'tourguide_id' => 4
             ]);
         }
