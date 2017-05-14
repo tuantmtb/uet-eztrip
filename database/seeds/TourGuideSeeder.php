@@ -19,6 +19,8 @@ class TourGuideSeeder extends Seeder
             'name' => 'Hướng dẫn viên',
             'email' => 'tourguide@gmail.com',
             'password' => bcrypt('tourguide'),
+            'description' => "I'm from Hanoi eBuddies - a organization which is willing to accompany tourists to attractive sites around Hanoi",
+            'img_avatar' => 'img2/cover/4.jpg',
             'remember_token' => str_random(10),
         ])->attachRole($tourguide);
 
