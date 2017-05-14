@@ -35,7 +35,17 @@ class TourController extends Controller
         /**
          * @var Tour $tour
          */
-        $tour = Tour::create($form->getRequest()->all());
+        $tour = Tour::create($form->getRequest()->only([
+            'name',
+            'short_description',
+            'description',
+            'place',
+            'price',
+            'time_duration',
+            'url_cover',
+            'url_gird',
+            'tourguide_id'
+        ]));
 
         return redirect()->route('tour.show', $tour->id);
     }

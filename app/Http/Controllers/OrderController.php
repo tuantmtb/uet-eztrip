@@ -25,7 +25,20 @@ class OrderController extends Controller
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
 
-        Order::create($form->getRequest()->all());
+        Order::create($form->getRequest()->only([
+            'full_name',
+            'phone',
+            'address',
+            'email',
+            'name_on_card',
+            'card_number',
+            'expiration_date_month',
+            'expiration_date_year',
+            'ccv',
+            'number_of_people',
+            'tour_id',
+            'tourist_id',
+        ]));
 
         return redirect()->route('home');
     }

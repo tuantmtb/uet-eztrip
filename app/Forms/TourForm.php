@@ -20,6 +20,9 @@ class TourForm extends Form
             ->add('place', 'text')
 //            ->add('city', 'text')
             ->add('price', 'number', [
+                'rules' => [
+                    'min:0',
+                ],
                 'label' => 'Price ($)',
                 'attr' => [
                     'step' => 0.01,
@@ -29,27 +32,29 @@ class TourForm extends Form
 //            ->add('time_begin', 'datetime-local')
 //            ->add('time_end', 'datetime-local')
             ->add('time_duration', 'number', [
+                'rules' => [
+                    'min:0',
+                ],
                 'label' => 'Time duration (hours)',
                 'attr' => [
                     'min' => 0
                 ],
             ])
             ->add('url_cover', 'url', [
+                'rules' => [
+                    'active_url',
+                ],
                 'label' => 'Url cover size=1800x700 (ex: http://abc.com/cover.jpg)'
             ])
             ->add('url_gird', 'url', [
-                'label' => 'Url cover size=800x533 (ex: http://abc.com/gird.jpg)'
+                'rules' => [
+                    'active_url',
+                ],
+                'label' => 'Url grid size=800x533 (ex: http://abc.com/gird.jpg)'
             ])
             ->add('tourguide_id', 'hidden', [
                 'value' => \Auth::user() ? \Auth::user()->id : null,
-
             ])
-//            ->add('tourguide_id', 'select', [
-//                'rules' => [
-//                    'required',
-//                ],
-//                'choices' => \Auth::user()->id,
-//            ])
             ->add('submit', 'submit');
     }
 }

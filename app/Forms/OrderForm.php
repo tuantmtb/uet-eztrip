@@ -14,7 +14,11 @@ class OrderForm extends Form
             ->add('full_name', 'text')
             ->add('phone', 'text')
             ->add('address', 'text')
-            ->add('email', 'email')
+            ->add('email', 'email', [
+                'rules' => [
+                    'email'
+                ]
+            ])
             ->add('name_on_card', 'text')
             ->add('card_number', 'text')
             ->add('expiration_date_month', 'select', [
@@ -23,12 +27,18 @@ class OrderForm extends Form
                 })->toArray()
             ])
             ->add('expiration_date_year', 'number', [
+                'rules' => [
+                    'min:0'
+                ],
                 'attr' => [
                     'min' => 0,
                 ]
             ])
             ->add('ccv', 'text')
             ->add('number_of_people', 'number', [
+                'rules' => [
+                    'min:0'
+                ],
                 'attr' => [
                     'min' => 0
                 ]
