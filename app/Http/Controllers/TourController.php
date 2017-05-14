@@ -11,6 +11,10 @@ class TourController extends Controller
 {
     public function create(FormBuilder $formBuilder)
     {
+        if (\Auth::user() == null) {
+            return redirect('/login');
+        }
+
         $form = $formBuilder->create(TourForm::class, [
             'method' => 'POST',
             'url' => route('tour.store'),
@@ -21,6 +25,7 @@ class TourController extends Controller
 
     public function store(FormBuilder $formBuilder)
     {
+
         $form = $formBuilder->create(TourForm::class);
 
         if (!$form->isValid()) {
