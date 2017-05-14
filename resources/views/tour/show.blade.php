@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', $tour->name)
+
 @section('page-level-styles')
     @parent
     {{Html::style('css/date_time_picker.css')}}
@@ -294,14 +296,11 @@
                         </div><!-- End row -->
                         <hr>
                         <div class="review_strip_single">
-                            {{Html::image('img/avatar1.jpg', 'Image', ['class' => 'img-circle'])}}
+                            {{Html::image('https://triip.imgix.net/new/img/triip-ava-bg/default-avatar-05.png?crop=faces&fit=crop&h=76&w=76', 'Image', ['class' => 'img-circle'])}}
                             <small> - 10 March 2015 -</small>
-                            <h4>Jhon Doe</h4>
+                            <h4>Mary</h4>
                             <p>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque
-                                interdum
-                                consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum
-                                primis in faucibus."
+                                She was great! She was very flexible and changes our itinerary to suit our taste. She knows the place around, and knows where to eat good food. She is very accomodating and fun to be around. We highly recommend her for your food trip. Unlike other food trip guide she don't cringe you with less food . Her service is worth every penny you pay for . She would bring you to places where they serve you with great food and big servings.
                             </p>
                             <div class="rating">
                                 <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i
@@ -311,14 +310,11 @@
                         </div><!-- End review strip -->
 
                         <div class="review_strip_single">
-                            {{Html::image('img/avatar3.jpg', 'Image', ['class' => 'img-circle'])}}
+                            {{Html::image('https://triip.imgix.net/new/img/triip-ava-bg/default-avatar-13.png?crop=faces&fit=crop&h=76&w=76', 'Image', ['class' => 'img-circle'])}}
                             <small> - 10 March 2015 -</small>
-                            <h4>Jhon Doe</h4>
+                            <h4>Amanda</h4>
                             <p>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque
-                                interdum
-                                consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum
-                                primis in faucibus."
+                                Fantastic night with great company!! Luci really took care of us and is such a sweetheart. Thank you Luci xx
                             </p>
                             <div class="rating">
                                 <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i
@@ -328,14 +324,11 @@
                         </div><!-- End review strip -->
 
                         <div class="review_strip_single last">
-                            {{Html::image('img/avatar2.jpg', 'Image', ['class' => 'img-circle'])}}
+                            {{Html::image('https://triip.imgix.net/new/img/triip-ava-bg/default-avatar-26.png?crop=faces&fit=crop&h=76&w=76', 'Image', ['class' => 'img-circle'])}}
                             <small> - 10 March 2015 -</small>
-                            <h4>Jhon Doe</h4>
+                            <h4>Jiyun</h4>
                             <p>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque
-                                interdum
-                                consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum
-                                primis in faucibus."
+                                Luci was the perfect tour guide. She knew all the local spots and planned out everything in advance so that I could spend my short time in Hanoi in the most optimal way. Furthermore, she was very accommodating, friendly, and punctual. I would definitely book another triip with her next time I'm in Hanoi! Thank you, Luci!
                             </p>
                             <div class="rating">
                                 <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i
