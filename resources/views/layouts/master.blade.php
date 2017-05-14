@@ -20,43 +20,55 @@
         <div id="top_line">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-6"><i class="icon-phone"></i><strong>0045 043204434</strong>
+                    <div class="col-md-6 col-sm-6 col-xs-6"><i class="icon-phone"></i><strong>0976200663</strong>
                     </div>
 
                     <div class="col-md-6 col-sm-6 col-xs-6">
                         <ul id="top_links">
                             <li>
                                 <div class="dropdown dropdown-access">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="access_link">Sign
-                                        in</a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                       id="access_link">{{Auth::check() ? 'Hello, ' .Auth::user()->name : 'Login'}}</a>
                                     <div class="dropdown-menu">
                                         <div class="row">
-                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <div class="col-md-12">
                                                 <a href="#" class="bt_facebook">
                                                     <i class="icon-facebook"></i>Facebook </a>
-                                            </div>
-                                            <div class="col-md-6 col-sm-6 col-xs-6">
-                                                <a href="#" class="bt_paypal">
-                                                    <i class="icon-paypal"></i>Paypal </a>
                                             </div>
                                         </div>
                                         <div class="login-or">
                                             <hr class="hr-or">
                                             <span class="span-or">or</span>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="inputUsernameEmail"
-                                                   placeholder="Email">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" id="inputPassword"
-                                                   placeholder="Password">
-                                        </div>
-                                        <a id="forgot_pw" href="#">Forgot password?</a>
-                                        <input type="submit" name="Sign_in" value="Sign in" id="Sign_in"
-                                               class="button_drop">
-                                        <input type="submit" name="Sign_up" value="Sign up" id="Sign_up"
-                                               class="button_drop outline">
+                                        @if(!Auth::check())
+                                            <form role="form" method="POST"
+                                                  action="{{ route('login') }}">
+                                                {{ csrf_field() }}
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="email"
+                                                           placeholder="Email">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control" name="password"
+                                                           placeholder="Password">
+                                                </div>
+                                                <a id="forgot_pw" href="#">Forgot password?</a>
+                                                <input type="submit" name="Sign_in" value="Sign in" id="Sign_in"
+                                                       class="button_drop">
+                                                <input type="_submit" name="Sign_up" value="Sign up" id="Sign_up"
+                                                       class="button_drop outline">
+                                            </form>
+                                        @else
+                                            <form role="form" method="POST"
+                                                  action="{{ route('logout') }}">
+                                                <a href="#">Hello, {{Auth::user()->name}}</a>
+                                                {{ csrf_field() }}
+
+                                                <input type="submit" value="Logout"
+                                                       class="button_drop">
+                                            </form>
+                                        @endif
+
                                     </div>
                                 </div><!-- End Dropdown access -->
                             </li>
