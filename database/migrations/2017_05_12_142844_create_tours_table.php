@@ -26,7 +26,7 @@ class CreateToursTable extends Migration
             $table->string('url_cover')->nullable();
             $table->string('url_gird')->nullable();
 
-            $table->integer('tourguide_id')->unsigned()->index();
+            $table->integer('tourguide_id')->unsigned()->nullable()->index();
             $table->foreign('tourguide_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
 

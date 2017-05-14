@@ -17,15 +17,15 @@ class TourForm extends Form
             ])
             ->add('description', 'textarea')
             ->add('place', 'text')
-            ->add('city', 'text')
+//            ->add('city', 'text')
             ->add('price', 'number', [
                 'attr' => [
                     'step' => 0.01,
                     'min' => 0,
                 ],
             ])
-            ->add('time_begin', 'datetime-local')
-            ->add('time_end', 'datetime-local')
+//            ->add('time_begin', 'datetime-local')
+//            ->add('time_end', 'datetime-local')
             ->add('time_duration', 'number', [
                 'attr' => [
                     'min' => 0
@@ -33,12 +33,12 @@ class TourForm extends Form
             ])
             ->add('url_cover', 'url')
             ->add('url_gird', 'url')
-            ->add('tourguide_id', 'select', [
-                'rules' => [
-                    'required',
-                ],
-                'choices' => User::pluck('name', 'id')->toArray(),
-            ])
+//            ->add('tourguide_id', 'select', [
+//                'rules' => [
+//                    'required',
+//                ],
+//                'choices' => User::pluck('name', 'id')->toArray(),
+//            ])
             ->add('submit', 'submit');
     }
 }

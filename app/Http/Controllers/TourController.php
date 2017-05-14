@@ -27,9 +27,12 @@ class TourController extends Controller
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
 
-        Tour::create($form->getRequest()->all());
+        $tour = Tour::create($form->getRequest()->all());
+        $id = $tour->id;
 
-        return redirect()->route('home');
+
+//        return redirect()->route('home');
+        return redirect()->route('tour.show', $id);
     }
 
     public function show($id)
