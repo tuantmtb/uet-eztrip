@@ -239,6 +239,10 @@
     @parent
     <script>
         function updateCart() {
+            if (!$.cookie('orders')) {
+                $.cookie('orders', JSON.stringify([]), {path: '/'});
+            }
+
             var cart_items = $('#cart_items');
             var orders = JSON.parse($.cookie('orders'));
             var total = 0;
@@ -272,10 +276,6 @@
         }
 
         $(function () {
-            if (!$.cookie('orders')) {
-                $.cookie('orders', JSON.stringify([]));
-            }
-
             updateCart();
         })
     </script>
