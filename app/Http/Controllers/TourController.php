@@ -40,4 +40,12 @@ class TourController extends Controller
         $tour = Tour::findOrFail($id);
         return view('tour.show', compact('tour'));
     }
+
+    public function lists()
+    {
+        $tours = Tour::paginate(10);
+
+        return view('tour.list', compact('tours'));
+
+    }
 }
