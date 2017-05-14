@@ -14,7 +14,6 @@
 @endsection
 
 @section('page')
-    @php(dd(Cart::contents()))
     <section id="hero_2">
         <div class="intro_title animated fadeInDown">
             <h1>Place your order</h1>
