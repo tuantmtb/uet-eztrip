@@ -24,6 +24,7 @@
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{url('css/profile.css')}}">
 
     <!-- REVOLUTION SLIDER CSS -->
     {{Html::style('rs-plugin/css/settings.css')}}
