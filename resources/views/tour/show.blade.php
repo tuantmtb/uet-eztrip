@@ -620,10 +620,7 @@
                     var index = null;
                     var newOrder = {
                         id: parseInt('{{$tour->id}}'),
-                        name: '{{$tour->name}}',
-                        url_cover: '{{$tour->url_cover}}',
                         total_amount: totalAmount,
-                        price: parseFloat('{{$tour->price}}')
                     };
                     $(orders).each(function(i, order) {
                         if (order.id === newOrder.id) {

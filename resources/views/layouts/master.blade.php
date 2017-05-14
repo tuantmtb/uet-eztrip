@@ -138,7 +138,11 @@
                                     <i class=" icon-basket-1"></i>Tour orders <span id="cart_count"></span>
                                 </a>
                                 <ul class="dropdown-menu" id="cart_items">
-
+                                    <li>
+                                        <div>Total: $<span id="cart_total">0</span></div>
+                                        <a href="cart.html" class="button_drop">Go to cart</a>
+                                        <a href="payment.html" class="button_drop outline">Check out</a>
+                                    </li>
                                 </ul>
                             </div><!-- End dropdown-cart-->
                         </li>
@@ -229,52 +233,32 @@
             </div><!-- End row -->
         </div><!-- End container -->
     </footer><!-- End footer -->
-
-    <div hidden id="cart_item">
-        <input type="hidden">
-        <div class="image">
-            <img src="" alt="">
-        </div>
-        <strong>
-
-        </strong>
-        <a href="javascript:" class="action"><i class="icon-trash"></i></a>
-    </div>
-
-    <div hidden id="cart_total">
-        <div>Total: $<span></span></div>
-        <a href="cart.html" class="button_drop">Go to cart</a>
-        <a href="payment.html" class="button_drop outline">Check out</a>
-    </div>
 @endsection
 
 @section('page-level-scripts')
     @parent
     <script>
         function updateCart() {
-            var cart_item = $('#cart_item');
             var cart_items = $('#cart_items');
-            var cart_total = $('#cart_total');
             var orders = JSON.parse($.cookie('orders'));
             var total = 0;
 
             console.log(orders);
 
             $('#cart_count').text(" (" + orders.length + ")");
-            cart_items.empty();
+            $('.cart_item').remove();
+            $('#cart_total').text(total);
 
-            $(orders).each(function (i, order) {
-                var show_url = '{{route('tour.show', ['id' => '_ID_'])}}'.replace('_ID_', order.id);
-                cart_item.find('input').val(order.id);
-                cart_item.find('img').attr('src', order.url_cover).attr('alt', order.name);
-                cart_item.find('strong').html('<a href="' + show_url + '">' + order.name + '</a> ' + order.total_amount + 'x $' + order.price);
-                cart_item.find('.action').attr('onclick', 'deleteCart(' + order.id + ')');
-                cart_items.append("<li>" + cart_item.html() + "</li>");
-                total += order.total_amount * order.price;
+            orders.reverse().forEach(function (order) {
+                $.ajax({
+                    method: 'get',
+                    url: '{{route('api.tour.cartItem')}}?id=' + order.id + '&total_amount=' + order.total_amount
+                }).done(function(response) {
+                    cart_items.prepend(response.html);
+                    total += order.total_amount * response.tour.price;
+                    $('#cart_total').text(total);
+                });
             });
-
-            cart_total.find('span').text(total);
-            cart_items.append("<li>" + cart_total.html() + "</li>");
         }
 
         function deleteCart(id) {
