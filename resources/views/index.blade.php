@@ -206,7 +206,7 @@
 
         </div><!-- End row -->
         <p class="text-center nopadding">
-            <a href="#" class="btn_1 medium"><i class="icon-eye-7"></i>View all tours ({{$tours->count()}}) </a>
+            <a href="{{route('tour.lists')}}" class="btn_1 medium"><i class="icon-eye-7"></i>View all tours ({{$tours_count}}) </a>
         </p>
     </div><!-- End container -->
 

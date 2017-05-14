@@ -43,8 +43,7 @@
     <div id="position">
         <div class="container">
             <ul>
-                <li><a href="{{route('home')}}">Home</a></li>
-                <li><a href="#">Tours</a></li>
+                <li><a href="{{route('tour.lists')}}">Tours</a></li>
                 <li>{{$tour->name}}</li>
             </ul>
         </div>
@@ -634,7 +633,7 @@
                         orders[index] = newOrder;
                     }
 
-                    $.cookie('orders', JSON.stringify(orders), '');
+                    $.cookie('orders', JSON.stringify(orders), {path: '/'});
                     updateCart();
                 });
         })

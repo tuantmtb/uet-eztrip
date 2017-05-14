@@ -23,3 +23,5 @@ Route::get('tours/{id}', 'TourController@show')->name('tour.show');
 
 Route::get('orders/create', 'OrderController@create')->name('order.create');
 Route::post('orders/store', 'OrderController@store')->name('order.store');
+
+Route::get('cart', 'CartController@cart')->name('cart');

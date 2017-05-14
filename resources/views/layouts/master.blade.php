@@ -243,8 +243,6 @@
             var orders = JSON.parse($.cookie('orders'));
             var total = 0;
 
-            console.log(orders);
-
             $('#cart_count').text(" (" + orders.length + ")");
             $('.cart_item').remove();
             $('#cart_total').text(total);

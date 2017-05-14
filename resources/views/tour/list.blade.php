@@ -5,6 +5,8 @@
     <link href="{{asset('css/skins/square/grey.css')}}" rel="stylesheet">
 @endsection
 
+@section('title', 'Tours list')
+
 @section('page')
     <section class="promo_full" style="background: url({{Config::get('app.url')}}/img2/cover/6.jpg)">
         <div class="promo_full_wp magnific">
@@ -14,6 +16,14 @@
             </div>
         </div>
     </section><!-- End section -->
+
+    <div id="position">
+        <div class="container">
+            <ul>
+                <li>Tours</li>
+            </ul>
+        </div>
+    </div><!-- End Position -->
 
     <div class="collapse" id="collapseMap">
         <div id="map" class="map"></div>
