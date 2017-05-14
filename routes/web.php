@@ -25,3 +25,4 @@ Route::get('orders/create', 'OrderController@create')->name('order.create');
 Route::post('orders/store', 'OrderController@store')->name('order.store');
 
 Route::get('cart', 'CartController@cart')->name('cart');
+Route::resource('user', 'UserController');
