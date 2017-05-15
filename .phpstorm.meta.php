@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-05-14.
+    * Generated on 2017-05-15.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -47,6 +47,7 @@ namespace PHPSTORM_META {
             'form' instanceof \Collective\Html\FormBuilder,
             'laravel-form-helper' instanceof \Kris\LaravelFormBuilder\FormHelper,
             'laravel-form-builder' instanceof \Kris\LaravelFormBuilder\FormBuilder,
+            'cart' instanceof \Gloudemans\Shoppingcart\Cart,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'cache' instanceof \Illuminate\Cache\CacheManager,
             'cache.store' instanceof \Illuminate\Cache\Repository,
@@ -175,6 +176,7 @@ namespace PHPSTORM_META {
             'form' instanceof \Collective\Html\FormBuilder,
             'laravel-form-helper' instanceof \Kris\LaravelFormBuilder\FormHelper,
             'laravel-form-builder' instanceof \Kris\LaravelFormBuilder\FormBuilder,
+            'cart' instanceof \Gloudemans\Shoppingcart\Cart,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'cache' instanceof \Illuminate\Cache\CacheManager,
             'cache.store' instanceof \Illuminate\Cache\Repository,
@@ -303,6 +305,7 @@ namespace PHPSTORM_META {
             'form' instanceof \Collective\Html\FormBuilder,
             'laravel-form-helper' instanceof \Kris\LaravelFormBuilder\FormHelper,
             'laravel-form-builder' instanceof \Kris\LaravelFormBuilder\FormBuilder,
+            'cart' instanceof \Gloudemans\Shoppingcart\Cart,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'cache' instanceof \Illuminate\Cache\CacheManager,
             'cache.store' instanceof \Illuminate\Cache\Repository,
@@ -431,6 +434,7 @@ namespace PHPSTORM_META {
             'form' instanceof \Collective\Html\FormBuilder,
             'laravel-form-helper' instanceof \Kris\LaravelFormBuilder\FormHelper,
             'laravel-form-builder' instanceof \Kris\LaravelFormBuilder\FormBuilder,
+            'cart' instanceof \Gloudemans\Shoppingcart\Cart,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'cache' instanceof \Illuminate\Cache\CacheManager,
             'cache.store' instanceof \Illuminate\Cache\Repository,
