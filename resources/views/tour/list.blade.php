@@ -156,7 +156,7 @@
                                         <small>(75)</small>
                                     </div>
                                     <h3>{{str_limit($tour->name, 30)}}</h3>
-                                    <p>{{str_limit($tour->short_description, 300)}}</p>
+                                    <p>{{str_limit($tour->short_description, 250)}}</p>
                                     <ul class="add_info">
                                         <li>
                                             <div class="tooltip_styled tooltip-effect-4">
