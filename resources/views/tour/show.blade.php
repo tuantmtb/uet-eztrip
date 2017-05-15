@@ -581,7 +581,312 @@
 
     <!-- Map -->
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCUNwUy389-GS3hRhjAoXogLTwwntRQl6A"></script>
-    {{Html::script('js/map.js')}}
+    <script>
+        $('#collapseMap').on('shown.bs.collapse', function (e) {
+            (function (A) {
+
+                if (!Array.prototype.forEach)
+                    A.forEach = A.forEach || function (action, that) {
+                            for (var i = 0, l = this.length; i < l; i++)
+                                if (i in this)
+                                    action.call(that, this[i], i, this);
+                        };
+
+            })(Array.prototype);
+
+            var
+                mapObject,
+                markers = [],
+                markersData = {
+                    'Sightseeing': [
+                        {
+                            name: '{{$tours[0]->name}}',
+                            location_latitude: 21.028036,
+                            location_longitude: 105.8526787,
+                            map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
+                            name_point: '{{$tours[0]->name}}',
+                            description_point: '{{$tours[0]->short_description}}',
+                            get_directions_start_address: '',
+                            phone: '+84976200663',
+                            url_point: '{{route('tour.show',$tours[0]->id)}}'
+                        },
+                        {
+                            name: '{{$tours[1]->name}}',
+                            location_latitude: 21.0272272,
+                            location_longitude: 105.8486528,
+                            map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
+                            name_point: '{{$tours[1]->name}}',
+                            description_point: '{{$tours[1]->short_description}}',
+                            get_directions_start_address: '',
+                            phone: '+84976200663',
+                            url_point: '{{route('tour.show',$tours[1]->id)}}'
+                        },
+                        {
+                            name: '{{$tours[2]->name}}',
+                            location_latitude: 21.03565,
+                            location_longitude: 105.8433073,
+                            map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
+                            name_point: '{{$tours[2]->name}}',
+                            description_point: '{{$tours[2]->short_description}}',
+                            get_directions_start_address: '',
+                            phone: '+84976200663',
+                            url_point: '{{route('tour.show',$tours[2]->id)}}'
+                        },
+                        {
+                            name: '{{$tours[3]->name}}',
+                            location_latitude: 21.0350411,
+                            location_longitude: 105.8353908,
+                            map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
+                            name_point: '{{$tours[3]->name}}',
+                            description_point: '{{$tours[3]->short_description}}',
+                            get_directions_start_address: '',
+                            phone: '+84976200663',
+                            url_point: '{{route('tour.show',$tours[3]->id)}}'
+                        },
+                        {
+                            name: '{{$tours[4]->name}}',
+                            location_latitude: 21.0328648,
+                            location_longitude: 105.834494,
+                            map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
+                            name_point: '{{$tours[4]->name}}',
+                            description_point: '{{$tours[4]->short_description}}',
+                            get_directions_start_address: '',
+                            phone: '+84976200663',
+                            url_point: '{{route('tour.show',$tours[4]->id)}}'
+                        },
+                        {
+                            name: '{{$tours[5]->name}}',
+                            location_latitude: 21.0421836,
+                            location_longitude: 105.8282165,
+                            map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
+                            name_point: '{{$tours[5]->name}}',
+                            description_point: '{{$tours[5]->short_description}}',
+                            get_directions_start_address: '',
+                            phone: '+84976200663',
+                            url_point: '{{route('tour.show',$tours[5]->id)}}'
+                        },
+                        {
+                            name: '{{$tours[6]->name}}',
+                            location_latitude: 21.045961,
+                            location_longitude: 105.826479,
+                            map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
+                            name_point: '{{$tours[6]->name}}',
+                            description_point: '{{$tours[6]->short_description}}',
+                            get_directions_start_address: '',
+                            phone: '+84976200663',
+                            url_point: '{{route('tour.show',$tours[6]->id)}}'
+                        },
+                        {
+                            name: '{{$tours[7]->name}}',
+                            location_latitude: 21.0428369,
+                            location_longitude: 105.7991848,
+                            map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
+                            name_point: '{{$tours[7]->name}}',
+                            description_point: '{{$tours[7]->short_description}}',
+                            get_directions_start_address: '',
+                            phone: '+84976200663',
+                            url_point: '{{route('tour.show',$tours[7]->id)}}'
+                        }
+                    ]
+
+                };
+
+
+            var mapOptions = {
+                zoom: 14,
+                center: new google.maps.LatLng(21.0279365,105.852572),
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+
+                mapTypeControl: false,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                    position: google.maps.ControlPosition.LEFT_CENTER
+                },
+                panControl: false,
+                panControlOptions: {
+                    position: google.maps.ControlPosition.TOP_RIGHT
+                },
+                zoomControl: true,
+                zoomControlOptions: {
+                    style: google.maps.ZoomControlStyle.LARGE,
+                    position: google.maps.ControlPosition.TOP_LEFT
+                },
+                scrollwheel: false,
+                scaleControl: false,
+                scaleControlOptions: {
+                    position: google.maps.ControlPosition.TOP_LEFT
+                },
+                streetViewControl: true,
+                streetViewControlOptions: {
+                    position: google.maps.ControlPosition.LEFT_TOP
+                },
+                styles: [
+                    {
+                        "featureType": "landscape",
+                        "stylers": [
+                            {
+                                "hue": "#FFBB00"
+                            },
+                            {
+                                "saturation": 43.400000000000006
+                            },
+                            {
+                                "lightness": 37.599999999999994
+                            },
+                            {
+                                "gamma": 1
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "stylers": [
+                            {
+                                "hue": "#FFC200"
+                            },
+                            {
+                                "saturation": -61.8
+                            },
+                            {
+                                "lightness": 45.599999999999994
+                            },
+                            {
+                                "gamma": 1
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "stylers": [
+                            {
+                                "hue": "#FF0300"
+                            },
+                            {
+                                "saturation": -100
+                            },
+                            {
+                                "lightness": 51.19999999999999
+                            },
+                            {
+                                "gamma": 1
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "stylers": [
+                            {
+                                "hue": "#FF0300"
+                            },
+                            {
+                                "saturation": -100
+                            },
+                            {
+                                "lightness": 52
+                            },
+                            {
+                                "gamma": 1
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "stylers": [
+                            {
+                                "hue": "#0078FF"
+                            },
+                            {
+                                "saturation": -13.200000000000003
+                            },
+                            {
+                                "lightness": 2.4000000000000057
+                            },
+                            {
+                                "gamma": 1
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "stylers": [
+                            {
+                                "hue": "#00FF6A"
+                            },
+                            {
+                                "saturation": -1.0989010989011234
+                            },
+                            {
+                                "lightness": 11.200000000000017
+                            },
+                            {
+                                "gamma": 1
+                            }
+                        ]
+                    }
+                ]
+            };
+            var
+                marker;
+            mapObject = new google.maps.Map(document.getElementById('map'), mapOptions);
+            for (var key in markersData)
+                markersData[key].forEach(function (item) {
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(item.location_latitude, item.location_longitude),
+                        map: mapObject,
+                        icon: window.Laravel.appUrl + '/img/pins/' + key + '.png',
+                    });
+
+                    if ('undefined' === typeof markers[key])
+                        markers[key] = [];
+                    markers[key].push(marker);
+                    google.maps.event.addListener(marker, 'click', (function () {
+                        closeInfoBox();
+                        getInfoBox(item).open(mapObject, this);
+                        mapObject.setCenter(new google.maps.LatLng(item.location_latitude, item.location_longitude));
+                    }));
+
+                });
+
+            function hideAllMarkers() {
+                for (var key in markers)
+                    markers[key].forEach(function (marker) {
+                        marker.setMap(null);
+                    });
+            };
+
+            function closeInfoBox() {
+                $('div.infoBox').remove();
+            };
+
+            function getInfoBox(item) {
+                return new InfoBox({
+                    content: '<div class="marker_info" id="marker_info">' +
+                    '<img src="' + item.map_image_url + '" alt="Image"/>' +
+                    '<h3>' + item.name_point + '</h3>' +
+                    '<span>' + item.description_point + '</span>' +
+                    '<div class="marker_tools">' +
+                    '<form action="http://maps.google.com/maps" method="get" target="_blank" style="display:inline-block""><input name="saddr" value="' + item.get_directions_start_address + '" type="hidden"><input type="hidden" name="daddr" value="' + item.location_latitude + ',' + item.location_longitude + '"><button type="submit" value="Get directions" class="btn_infobox_get_directions">Directions</button></form>' +
+                    '<a href="tel://' + item.phone + '" class="btn_infobox_phone">' + item.phone + '</a>' +
+                    '</div>' +
+                    '<a href="' + item.url_point + '" class="btn_infobox">Details</a>' +
+                    '</div>',
+                    disableAutoPan: false,
+                    maxWidth: 0,
+                    pixelOffset: new google.maps.Size(10, 125),
+                    closeBoxMargin: '5px -20px 2px 2px',
+                    closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif",
+                    isHidden: false,
+                    alignBottom: true,
+                    pane: 'floatPane',
+                    enableEventPropagation: true
+                });
+
+
+            };
+
+        });
+    </script>
+{{--    {{Html::script('js/map.js')}}--}}
     {{Html::script('js/infobox.js')}}
 
     <script>
