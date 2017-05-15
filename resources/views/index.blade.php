@@ -39,7 +39,7 @@
                          data-speed="500" data-start="2900" data-easing="Power3.easeInOut" data-splitin="none"
                          data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-linktoslide="next"
                          style="z-index: 12;"><a href='{{route('tour.lists')}}' class="button_intro">View tours</a> <a
-                                href='{{route('tour.show', ['id' => 1])}}' class=" button_intro outline">Read more</a>
+                                href='{{route('tour.lists')}}' class=" button_intro outline">Read more</a>
                     </div>
                 </li>
                 <!-- SLIDE  -->
@@ -76,7 +76,7 @@
                          data-speed="500" data-start="2900" data-easing="Power3.easeInOut" data-splitin="none"
                          data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-linktoslide="next"
                          style="z-index: 12;"><a href='{{route('tour.lists')}}' class="button_intro">View tours</a> <a
-                                href='{{route('tour.show', ['id' => 1])}}' class=" button_intro outline">Read more</a>
+                                href='{{route('tour.lists')}}' class=" button_intro outline">Read more</a>
                     </div>
                 </li>
 
@@ -114,7 +114,7 @@
                          data-speed="500" data-start="2900" data-easing="Power3.easeInOut" data-splitin="none"
                          data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-linktoslide="next"
                          style="z-index: 12;"><a href='{{route('tour.lists')}}' class="button_intro">View tours</a> <a
-                                href='{{route('tour.show', ['id' => 1])}}' class=" button_intro outline">Read more</a>
+                                href='{{route('tour.lists')}}' class=" button_intro outline">Read more</a>
                     </div>
                 </li>
 
@@ -153,7 +153,7 @@
                          data-speed="500" data-start="2900" data-easing="Power3.easeInOut" data-splitin="none"
                          data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-linktoslide="next"
                          style="z-index: 12;"><a href='{{route('tour.lists')}}' class="button_intro">View tours</a> <a
-                                href='{{route('tour.show', ['id' => 1])}}' class=" button_intro outline">Read more</a>
+                                href='{{route('tour.lists')}}' class=" button_intro outline">Read more</a>
                     </div>
                 </li>
 
@@ -225,7 +225,7 @@
                 <p>
                     Shown the secrets of your destination that no tourist knows
                 </p>
-                <a href="{{route('tour.show', ['id' => 1])}}" class="btn_1 white">Read more</a>
+                <a href="{{route('tour.lists')}}" class="btn_1 white">Read more</a>
             </div>
             <div class="row">
                 <div class="main_title">
