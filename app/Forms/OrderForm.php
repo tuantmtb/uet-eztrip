@@ -16,7 +16,7 @@ class OrderForm extends Form
             ->add('address', 'text')
             ->add('email', 'email', [
                 'rules' => [
-                    'email'
+                    'email', 'nullable'
                 ]
             ])
             ->add('name_on_card', 'text')
@@ -49,11 +49,8 @@ class OrderForm extends Form
                 ],
                 'choices' => Tour::pluck('name', 'id')->toArray(),
             ])
-            ->add('tourist_id', 'select', [
-                'rules' => [
-                    'required',
-                ],
-                'choices' => User::pluck('name', 'id')->toArray(),
+            ->add('tourist_id', 'hidden', [
+                'value' => \Auth::check() ? \Auth::user()->id : 5,
             ])
             ->add('submit', 'submit');
     }

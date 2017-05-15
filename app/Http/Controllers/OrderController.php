@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Forms\OrderForm;
 use App\Order;
-use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 
 class OrderController extends Controller
@@ -25,7 +24,7 @@ class OrderController extends Controller
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
 
-        Order::create($form->getRequest()->only([
+        $attributes = $form->getRequest()->only([
             'full_name',
             'phone',
             'address',
@@ -38,8 +37,11 @@ class OrderController extends Controller
             'number_of_people',
             'tour_id',
             'tourist_id',
-        ]));
+        ]);
+        Order::create($attributes);
 
         return redirect()->route('home');
     }
+
+
 }

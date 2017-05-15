@@ -29,7 +29,7 @@
                     <div class="progress">
                         <div class="progress-bar"></div>
                     </div>
-                    <a href="cart.html" class="bs-wizard-dot"></a>
+                    <a href="{{route('cart')}}" class="bs-wizard-dot"></a>
                 </div>
 
                 <div class="col-xs-4 bs-wizard-step disabled">
@@ -37,7 +37,7 @@
                     <div class="progress">
                         <div class="progress-bar"></div>
                     </div>
-                    <a href="payment.html" class="bs-wizard-dot"></a>
+                    <a href="{{route('cart.payment')}}" class="bs-wizard-dot"></a>
                 </div>
 
                 <div class="col-xs-4 bs-wizard-step disabled">
@@ -345,9 +345,9 @@
                         </tbody>
                     </table>
                     @if(Cart::content()->isNotEmpty())
-                        <a href="javascript:" class="btn_full">Check out</a>
+                        <a href="{{route('cart.payment')}}" class="btn_full">Check out</a>
                     @else
-                        <button class="btn_full" disabled>Check out</button>
+                        <button class="btn_full" type="button" disabled>Check out</button>
                     @endif
                     <a class="btn_full_outline" href="{{route('tour.lists')}}"><i class="icon-right"></i> Continue shopping</a>
                 </div>

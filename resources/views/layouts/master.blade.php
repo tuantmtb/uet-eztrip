@@ -159,7 +159,7 @@
                                     <li>
                                         <div>Total: $<span>{{Cart::total()}}</span></div>
                                         <a href="{{route('cart')}}" class="button_drop">Go to cart</a>
-                                        <a href="{{route('cart')}}" class="button_drop outline">Check out</a>
+                                        <a href="{{route('cart.payment')}}" class="button_drop outline">Check out</a>
                                     </li>
                                 </ul>
                             </div><!-- End dropdown-cart-->
