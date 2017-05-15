@@ -147,9 +147,8 @@
                                                 class="tooltip-content-flip"><span
                                                     class="tooltip-back">Add to wishlist</span></span></a>
                                 </div>
-                                <div class="img_list"><a href="{{route('tour.show', $tour->id)}}"><img
-                                                src="{{$tour->url_gird}}"
-                                                alt="Image">
+                                <div class="img_list"><a href="{{route('tour.show', $tour->id)}}"><img src="{{$tour->url_gird}}"
+                                                                                      alt="Image">
                                         <div class="short_info"><i class="icon_set_1_icon-4"></i>{{$tour->city}}</div>
                                     </a>
                                 </div>
@@ -163,8 +162,8 @@
                                                 class="icon-smile"></i>
                                         <small>(75)</small>
                                     </div>
-                                    <h3>{{$tour->name}}</h3>
-                                    <p>{{str_limit(strip_tags($tour->description), 300)}}</p>
+                                    <h3>{{str_limit($tour->name, 30)}}</h3>
+                                    <p>{{str_limit($tour->short_description, 300)}}</p>
                                     <ul class="add_info">
                                         <li>
                                             <div class="tooltip_styled tooltip-effect-4">
