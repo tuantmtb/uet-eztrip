@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property string $name
+ * @property string $short_description
  * @property string $description
  * @property string $place
  * @property string $city
@@ -30,6 +31,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Tour whereName($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Tour wherePlace($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Tour wherePrice($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Tour whereShortDescription($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Tour whereTimeBegin($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Tour whereTimeDuration($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Tour whereTimeEnd($value)

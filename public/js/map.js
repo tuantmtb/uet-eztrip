@@ -12,170 +12,12 @@ $('#collapseMap').on('shown.bs.collapse', function(e){
 
 		var
 		mapObject,
-		markers = [],
-		markersData = {
-			'Single_hotel': [
-			{
-				name: 'Hotel Mariott',
-				location_latitude: 48.873792, 
-				location_longitude: 2.295028,
-				map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
-				name_point: 'Hotel Mariott',
-				description_point: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-				get_directions_start_address: '',
-				phone: '+3934245255',
-				url_point: 'single_hotel.html'
-			}
-			],
-			'Sightseeing': [
-			{
-				name: 'Open Bus',
-				location_latitude: 48.865633, 
-				location_longitude: 2.321236,
-				map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
-				name_point: 'Open Bus',
-				description_point: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-				get_directions_start_address: '',
-				phone: '+3934245255',
-				url_point: 'single_tour.html'
-			},
-			{
-				name: 'Senna River Tour',
-				location_latitude: 48.854183,
-				location_longitude: 2.354808,
-				map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
-				name_point: 'Senna River Tour',
-				description_point: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-				get_directions_start_address: '',
-				phone: '+3934245255',
-				url_point: 'single_tour.html'
-			}
-			],
-			'Museums': [
-			{
-				name: 'Louvre',
-				location_latitude: 48.863893, 
-				location_longitude: 2.342348,
-				map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
-				name_point: 'Louvre',
-				description_point: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-				get_directions_start_address: '',
-				phone: '+3934245255',
-				url_point: 'single_tour.html'
-			},
-			{
-				name: 'Pompidou ',
-				location_latitude: 48.860642,
-				location_longitude: 2.352245,
-				map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
-				name_point: 'Pompidou',
-				description_point: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-				get_directions_start_address: '',
-				phone: '+3934245255',
-				url_point: 'single_tour.html'
-			}
-			],
-			'Skyline': [
-			{
-				name: 'Tour Eiffel',
-				location_latitude: 48.858370, 
-				location_longitude: 2.294481,
-				map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
-				name_point: 'Tour Eiffel',
-				description_point: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-				get_directions_start_address: '',
-				phone: '+3934245255',
-				url_point: 'single_tour.html'
-			},
-			{
-				name: 'Montparnasse',
-				location_latitude: 48.837273,
-				location_longitude: 2.335387,
-				map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
-				name_point: 'Montparnasse',
-				description_point: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-				get_directions_start_address: '',
-				phone: '+3934245255',
-				url_point: 'single_tour.html'
-			}
-			],
-			'Eat_drink': [
-			{
-				name: 'Beaubourg',
-				location_latitude: 48.860819, 
-				location_longitude: 2.354507,
-				map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
-				name_point: 'Beaubourg',
-				description_point: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-				get_directions_start_address: '',
-				phone: '+3934245255',
-				url_point: 'single_tour.html'
-			},
-			{
-				name: 'St. Germain des Prés',
-				location_latitude: 48.853798,
-				location_longitude: 2.333328,
-				map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
-				name_point: 'St. Germain des Prés',
-				description_point: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-				get_directions_start_address: '',
-				phone: '+3934245255',
-				url_point: 'single_tour.html'
-			}
-			],
-			'Walking': [
-			{
-				name: 'Trocadero',
-				location_latitude: 48.862880, 
-				location_longitude: 2.287205,
-				map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
-				name_point: 'Trocadero',
-				description_point: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-				url_point: 'single_tour.html'
-			},
-			{
-				name: 'Champs-Élysées',
-				location_latitude: 48.865784,
-				location_longitude: 2.307314,
-				map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
-				name_point: 'Champs-Élysées',
-				description_point: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-				get_directions_start_address: '',
-				phone: '+3934245255',
-				url_point: 'single_tour.html'
-			}
-			],
-			'Churches': [
-			{
-				name: 'Notre Dame',
-				location_latitude: 48.852729, 
-				location_longitude: 2.350564,
-				map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
-				name_point: 'Notre Dame',
-				description_point: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-				get_directions_start_address: '',
-				phone: '+3934245255',
-				url_point: 'single_tour.html'
-			},
-			{
-				name: 'Madeleine',
-				location_latitude: 48.870587, 
-				location_longitude: 2.318943,
-				map_image_url: window.Laravel.appUrl + '/img/thumb_map_1.jpg',
-				name_point: 'Madeleine',
-				description_point: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-				get_directions_start_address: '',
-				phone: '+3934245255',
-				url_point: 'single_tour.html'
-			}
-			]
-
-		};
-
+		markers = [];
+		markersData = window.mapData.markersData;
 
 			var mapOptions = {
 				zoom: 14,
-				center: new google.maps.LatLng(48.865633, 2.321236),
+				center: new google.maps.LatLng(window.mapData.center.location_latitude, window.mapData.center.location_longitude),
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
 
 				mapTypeControl: false,
@@ -343,7 +185,7 @@ $('#collapseMap').on('shown.bs.collapse', function(e){
 			return new InfoBox({
 				content:
 				'<div class="marker_info" id="marker_info">' +
-				'<img src="' + item.map_image_url + '" alt="Image"/>' +
+				'<img src="' + item.map_image_url + '" alt="Image" width="280" height="140"/>' +
 				'<h3>'+ item.name_point +'</h3>' +
 				'<span>'+ item.description_point +'</span>' +
 				'<div class="marker_tools">' +
