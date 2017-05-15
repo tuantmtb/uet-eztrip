@@ -79,9 +79,7 @@
                         <h3>Description</h3>
                     </div>
                     <div class="col-md-9">
-                        <p>
-                            {!! $tour->description !!}
-                        </p>
+                        {!! $tour->description !!}
                     </div>
                 </div>
 
