@@ -1,7 +1,5 @@
 @extends('layouts.master')
 
-@section('title', 'Payment')
-
 @section('page-level-scripts')
     @parent
     <!-- CSS -->
@@ -66,7 +64,7 @@
                         <div class="col-md-6 col-sm-6">
                             <div class="form-group @if($errors->has('full_name')) has-error @endif">
                                 {{Form::label('full_name', 'Full name *')}}
-                                {{Form::text('full_name', null, ['class' => 'form-control', 'required' => true])}}
+                                {{Form::text('full_name', Auth::check() ? Auth::user()->name : null, ['class' => 'form-control', 'required' => true])}}
                                 <span class="help-block">{{$errors->first('full_name')}}</span>
                             </div>
                         </div>
@@ -82,7 +80,7 @@
                         <div class="col-md-6 col-sm-6">
                             <div class="form-group @if($errors->has('email')) has-error @endif">
                                 {{Form::label('email', 'Email')}}
-                                {{Form::email('email', null, ['class' => 'form-control'])}}
+                                {{Form::email('email', Auth::check() ? Auth::user()->email : null, ['class' => 'form-control'])}}
                                 <span class="help-block">{{$errors->first('email')}}</span>
                             </div>
                         </div>
@@ -97,7 +95,7 @@
                 <div class="step">
                     <div class="form-group @if($errors->has('name_on_card')) has-error @endif">
                         {{Form::label('name_on_card', 'Name on card *')}}
-                        {{Form::text('name_on_card', null, ['class' => 'form-control', 'required' => true])}}
+                        {{Form::text('name_on_card', Auth::check() ? mb_strtoupper(Auth::user()->name) : null, ['class' => 'form-control', 'required' => true])}}
                         <span class="help-block">{{$errors->first('name_on_card')}}</span>
                     </div>
                     <div class="row">
@@ -168,7 +166,7 @@
                         <div class="col-md-12 col-sm-12">
                             <div class="form-group @if($errors->has('address')) has-error @endif">
                                 {{Form::label('address', 'Address *')}}
-                                {{Form::text('address', null, ['class' => 'form-control'])}}
+                                {{Form::text('address', Auth::check() ? Auth::user()->address : null, ['class' => 'form-control'])}}
                                 <span class="help-block">{{$errors->first('address')}}</span>
                             </div>
                         </div>
@@ -211,12 +209,7 @@
                     <button class="btn_full" type="submit">Book now</button>
                     <a class="btn_full_outline" href="{{route('tour.lists')}}"><i class="icon-right"></i> Continue shopping</a>
                 </div>
-                <div class="box_style_4">
-                    <i class="icon_set_1_icon-57"></i>
-                    <h4>Need <span>Help?</span></h4>
-                    <a href="tel://004542344599" class="phone">+45 423 445 99</a>
-                    <small>Monday to Friday 9.00am - 7.30pm</small>
-                </div>
+                @include('partials.need_help')
             </aside>
             {{Form::close()}}
         </div><!--End row -->

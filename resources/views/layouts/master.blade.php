@@ -1,11 +1,4 @@
 @extends('layouts.base')
-@section('page-level-styles')
-    <style>
-        header {
-            background-color: #3c9faa
-        }
-    </style>
-@endsection
 
 @section('body')
 
@@ -23,11 +16,11 @@
     <div class="layer"></div>
     <!-- Mobile menu overlay mask -->
 
-    <header style="">
+    <header id="plain">
         <div id="top_line">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-6"><i class="icon-phone"></i><strong>0976200663</strong>
+                    <div class="col-md-6 col-sm-6 col-xs-6"><i class="icon-phone"></i><strong>{{config('app.phone')}}</strong>
                     </div>
 
                     <div class="col-md-6 col-sm-6 col-xs-6">
@@ -91,7 +84,7 @@
                 <div class="col-md-3 col-sm-3 col-xs-3">
                     <div id="logo">
                         <a href="{{route('home')}}">
-                            {{Html::image('img/logo.png', 'ezTrip', ['width' => 160, 'height' => 34, 'data-retina' => true, 'class' => 'logo_normal'])}}
+                            {{Html::image('img/logo_sticky.png', 'ezTrip', ['width' => 160, 'height' => 34, 'data-retina' => true, 'class' => 'logo_normal'])}}
                         </a>
                         <a href="{{route('home')}}">
                             {{Html::image('img/logo_sticky.png', 'ezTrip', ['width' => 160, 'height' => 34, 'data-retina' => true, 'class' => 'logo_sticky'])}}
@@ -189,8 +182,8 @@
             <div class="row">
                 <div class="col-md-4 col-sm-3">
                     <h3>Need help?</h3>
-                    <a href="tel://004542344599" id="phone">+45 423 445 99</a>
-                    <a href="mailto:help@eztrip.com" id="email_footer">support@eztrip.com</a>
+                    <a href="tel://{{config('app.phone')}}" id="phone">{{config('app.phone')}}</a>
+                    <a href="mailto:{{config('app.email')}}" id="email_footer">{{config('app.email')}}</a>
                 </div>
                 <div class="col-md-3 col-sm-3">
                     <h3>About</h3>

@@ -1,7 +1,5 @@
 @extends('layouts.master')
 
-@section('title', 'My cart')
-
 @section('page-level-scripts')
     @parent
     <!-- CSS -->
@@ -351,12 +349,7 @@
                     @endif
                     <a class="btn_full_outline" href="{{route('tour.lists')}}"><i class="icon-right"></i> Continue shopping</a>
                 </div>
-                <div class="box_style_4">
-                    <i class="icon_set_1_icon-57"></i>
-                    <h4>Need <span>Help?</span></h4>
-                    <a href="tel://004542344599" class="phone">+45 423 445 99</a>
-                    <small>Monday to Friday 9.00am - 7.30pm</small>
-                </div>
+                @include('partials.need_help')
             </aside><!-- End aside -->
 
         </div><!--End row -->

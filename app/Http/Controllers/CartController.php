@@ -71,16 +71,17 @@ class CartController extends Controller
         ]);
         $attributes['tourist_id'] = \Auth::check() ? \Auth::id() : 5;
         $attributes['number_of_people'] = \Cart::content()->sum('qty');
+        $orders = [];
         foreach (\Cart::content()->pluck('id') as $tour_id) {
-            Order::create(array_merge($attributes, compact('tour_id')));
+            $orders[] = Order::create(array_merge($attributes, compact('tour_id')));
         }
         \Cart::destroy();
 
-        \Session::flash('toastr', [
-            'level' => 'success',
-            'title' => 'Checked out successfully',
-            'message' => 'You have just checked out successfully!',
-        ]);
-        return redirect()->route('home');
+        return redirect()->route('cart.finish', ['order_ids' => array_pluck($orders, 'id')]);
+    }
+
+    public function finish(Request $request) {
+        $orders = Order::findMany($request->get('order_ids'))->load('tour', 'tour.tourguide');
+        return view('cart.finish', compact('orders'));
     }
 }

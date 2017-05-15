@@ -29,5 +29,6 @@ Route::get('cart/payment', 'CartController@payment')->name('cart.payment');
 Route::post('cart/payment', 'CartController@checkout')->name('cart.checkout');
 Route::post('cart/delete', 'CartController@delete')->name('cart.delete');
 Route::post('cart/add', 'CartController@add')->name('cart.add');
+Route::get('cart/finish', 'CartController@finish')->name('cart.finish');
 
 Route::resource('user', 'UserController');

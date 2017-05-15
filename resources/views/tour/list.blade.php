@@ -5,8 +5,6 @@
     <link href="{{asset('css/skins/square/grey.css')}}" rel="stylesheet">
 @endsection
 
-@section('title', 'Tours list')
-
 @section('page')
     <section class="promo_full" style="background: url({{Config::get('app.url')}}/img2/cover/6.jpg)">
         <div class="promo_full_wp magnific">
@@ -99,12 +97,7 @@
                         </div>
                     </div><!--End collapse -->
                 </div><!--End filters col-->
-                <div class="box_style_2">
-                    <i class="icon_set_1_icon-57"></i>
-                    <h4>Need <span>Help?</span></h4>
-                    <a href="tel://004542344599" class="phone">+45 423 445 99</a>
-                    <small>Monday to Friday 9.00am - 7.30pm</small>
-                </div>
+                @include('partials.need_help')
             </aside><!--End aside -->
             <div class="col-lg-9 col-md-9">
                 <div id="tools">
