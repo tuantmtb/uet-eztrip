@@ -18,7 +18,7 @@
                          data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
                          data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
                          data-speed="1000" data-start="1700" data-easing="Back.easeInOut" data-endspeed="300"
-                         style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;">Affordable Paris
+                         style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;">Affordable Vietnam
                         Tours
                     </div>
                     <!-- LAYER NR. 2 -->
@@ -131,7 +131,7 @@
                          data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
                          data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
                          data-speed="1000" data-start="1700" data-easing="Back.easeInOut" data-endspeed="300"
-                         style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;">CityTours provides
+                         style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;">ezTrip provides
                         tour
                         guides
                     </div>
@@ -543,8 +543,6 @@
             <div class="col-md-4 col-sm-6">
                 <h3><span>Get started</span> with ezTrip</h3>
                 <p>
-                    Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor
-                    imperdiet deterruisset.
                 </p>
                 <ul class="list_order">
                     <li><span>1</span>Select your preferred tours</li>
