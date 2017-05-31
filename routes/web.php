@@ -23,6 +23,8 @@ Route::get('tours/{id}', 'TourController@show')->name('tour.show');
 
 Route::get('orders/create', 'OrderController@create')->name('order.create');
 Route::post('orders/store', 'OrderController@store')->name('order.store');
+Route::get('orders/my-orders', 'OrderController@myOrder')->name('order.my');
+Route::get('orders/{id}/delete','OrderController@delete')->name('order.delete');
 
 Route::get('cart', 'CartController@cart')->name('cart');
 Route::get('cart/payment', 'CartController@payment')->name('cart.payment');

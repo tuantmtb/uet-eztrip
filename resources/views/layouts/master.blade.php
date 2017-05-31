@@ -20,7 +20,8 @@
         <div id="top_line">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-6"><i class="icon-phone"></i><strong>{{config('app.phone')}}</strong>
+                    <div class="col-md-6 col-sm-6 col-xs-6"><i
+                                class="icon-phone"></i><strong>{{config('app.phone')}}</strong>
                     </div>
 
                     <div class="col-md-6 col-sm-6 col-xs-6">
@@ -30,17 +31,17 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                                        id="access_link">{{Auth::check() ? 'Hello, ' .Auth::user()->name : 'Login'}}</a>
                                     <div class="dropdown-menu">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <a href="#" class="bt_facebook">
-                                                    <i class="icon-facebook"></i>Facebook </a>
-                                            </div>
-                                        </div>
-                                        <div class="login-or">
-                                            <hr class="hr-or">
-                                            <span class="span-or">or</span>
-                                        </div>
                                         @if(!Auth::check())
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <a href="#" class="bt_facebook">
+                                                        <i class="icon-facebook"></i>Facebook </a>
+                                                </div>
+                                            </div>
+                                            <div class="login-or">
+                                                <hr class="hr-or">
+                                                <span class="span-or">or</span>
+                                            </div>
                                             <form role="form" method="POST"
                                                   action="{{ route('login') }}">
                                                 {{ csrf_field() }}
@@ -53,10 +54,10 @@
                                                            placeholder="Password">
                                                 </div>
                                                 <a id="forgot_pw" href="#">Forgot password?</a>
-                                                <input type="submit" name="Sign_in" value="Sign in" id="Sign_in"
+                                                <input type="submit" value="Sign in" id="Sign_in"
                                                        class="button_drop">
-                                                <input type="_submit" name="Sign_up" value="Sign up" id="Sign_up"
-                                                       class="button_drop outline">
+                                                <a id="Sign_up" href="{{route('register')}}"
+                                                   class="button_drop outline">Sign up</a>
                                             </form>
                                         @else
                                             <form role="form" method="POST"
@@ -64,12 +65,13 @@
                                                 <a href="#">Hello, {{Auth::user()->name}}</a>
                                                 {{ csrf_field() }}
 
+                                                <a href="{{route('order.my')}}" class="button_drop">My orders</a>
                                                 <input type="submit" value="Logout"
-                                                       class="button_drop">
+                                                       class="button_drop outline">
                                             </form>
                                         @endif
-
                                     </div>
+
                                 </div><!-- End Dropdown access -->
                             </li>
                             <li><a href="wishlist.html" id="wishlist_link">Wishlist</a></li>
@@ -144,9 +146,11 @@
                                                 <img src="{{$cart->options->get('url_gird')}}">
                                             </div>
                                             <strong>
-                                                <a href="{{route('tour.show', $cart->id)}}">{{$cart->name}}</a> {{$cart->qty}}x ${{$cart->price}}
+                                                <a href="{{route('tour.show', $cart->id)}}">{{$cart->name}}</a> {{$cart->qty}}
+                                                x ${{$cart->price}}
                                             </strong>
-                                            <a href="javascript:" class="action" onclick="deleteCart('{{$cart->rowId}}')"><i class="icon-trash"></i></a>
+                                            <a href="javascript:" class="action"
+                                               onclick="deleteCart('{{$cart->rowId}}')"><i class="icon-trash"></i></a>
                                         </li>
                                     @endforeach
                                     <li>

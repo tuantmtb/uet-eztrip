@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Forms\OrderForm;
 use App\Order;
+use App\Tour;
+use App\User;
 use Kris\LaravelFormBuilder\FormBuilder;
 
 class OrderController extends Controller
@@ -43,5 +45,26 @@ class OrderController extends Controller
         return redirect()->route('home');
     }
 
+    public function delete($id) {
+        Order::destroy([$id]);
+        return redirect()->route('order.my');
+    }
 
+    public function myOrder() {
+        $orders = collect();
+        $tours = Tour::all()->random(6);
+        /**
+         * @var User $user
+         */
+        $user = \Auth::user();
+
+        if (\Entrust::hasRole('tourguide')) {
+            $tours = $user->tours;
+            $orders = Order::whereIn('tour_id', $tours->pluck('id'));
+        } else {
+            $orders = $user->orders;
+        }
+
+        return view('order.list', compact('orders', 'tours'));
+    }
 }
