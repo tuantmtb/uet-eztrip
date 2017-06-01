@@ -116,13 +116,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group @if($errors->has('expiration_date_month')) has-error @endif">
-                                        {{Form::select('expiration_date_month', $months, null, ['class' => 'form-control', 'required' => true])}}
+                                        {{Form::select('expiration_date_month', $months, null, ['class' => 'form-control', 'required' => true, 'id' => 'expiration_date_month'])}}
                                         <span class="help-block">{{$errors->first('expiration_date_month')}}</span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group @if($errors->has('expiration_date_year')) has-error @endif">
-                                        {{Form::number('expiration_date_year', null, ['class' => 'form-control', 'required' => true, 'min' => 0, 'placeholder' => 'Year'])}}
+                                        {{Form::number('expiration_date_year', null, ['class' => 'form-control', 'required' => true, 'min' => 0, 'placeholder' => 'Year', 'id' => 'expiration_date_year'])}}
                                         <span class="help-block">{{$errors->first('expiration_date_year')}}</span>
                                     </div>
                                 </div>
@@ -224,6 +224,23 @@
         $('input').iCheck({
             checkboxClass: 'icheckbox_square-grey',
             radioClass: 'iradio_square-grey'
+        });
+
+        $(function() {
+            if ($.cookie) {
+                ['full_name', 'phone', 'email', 'name_on_card', 'expiration_date_month', 'expiration_date_year', 'ccv', 'address'].forEach(function(field) {
+                    var input = $('#' + field);
+                    var old_value = $.cookie(field);
+
+                    if (old_value) {
+                        input.val(old_value);
+                    }
+
+                    input.change(function() {
+                       $.cookie(field, input.val());
+                    });
+                });
+            }
         });
     </script>
 @endsection
