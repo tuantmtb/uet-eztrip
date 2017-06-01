@@ -1,5 +1,15 @@
 @extends('layouts.master')
 
+@section('page-level-styles')
+    @parent
+    <style>
+        .img_container {
+            width: 360px;
+            height: 140.42px;
+        }
+    </style>
+@endsection
+
 @section('page')
     <!-- Slider -->
     <div class="tp-banner-container">
