@@ -13,7 +13,8 @@ class TourBatchImportController extends Controller
      * @param array|Collection $data
      * @return Collection
      */
-    private static function collect($data) {
+    private static function collect($data)
+    {
         return $data instanceof Collection ? $data : collect($data);
     }
 
@@ -22,7 +23,8 @@ class TourBatchImportController extends Controller
      * @param int $id
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public static function createOne($data, $id = null) {
+    public static function createOne($data, $id = null)
+    {
         $data = self::collect($data);
 
         $tourguide_role = Role::findByName('tourguide');
@@ -41,7 +43,7 @@ class TourBatchImportController extends Controller
         $attrs = [
             'name' => $data->get('name'),
             'url_cover' => $data->get('cover'),
-            'url_gird' => $data->get('gird'),
+            'url_gird' => $data->get('cover'),
             'place' => $place->get('name'),
             'description' => "<p>" . str_replace('\n', '<br>', $data->get('description')) . "<p>",
             'short_description' => trim(explode('\n', strip_tags($data->get('description')))[0], 255),
