@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-md-8 col-sm-8">
                         <h1>{{$tour->name}}</h1>
-                        <span>{{$tour->place}}, {{$tour->city}}</span>
+                        <span>{{$tour->place}}</span>
                         <span class="rating"><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i
                                     class="icon-smile voted"></i><i class="icon-smile voted"></i><i
                                     class="icon-smile"></i><small>(75)</small></span>
@@ -73,6 +73,23 @@
                                                     aria-expanded="false" aria-controls="collapseMap"
                                                     data-text-swap="Hide map" data-text-original="View on map">View on
                         map</a></p><!-- Map button for tablets/mobiles -->
+
+                @role('admin')
+                <div class="row visible-sm visible-xs">
+                    <div class="col-xs-6">
+                        <a href="{{route('tour.edit', $tour->id)}}" class="btn btn-warning" style="width: 100%">
+                            <i class="fa fa-edit"></i> Edit
+                        </a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="{{route('tour.delete', $tour->id)}}" class="btn btn-danger" style="width: 100%">
+                            <i class="fa fa-trash"></i> Delete
+                        </a>
+                    </div>
+                </div>
+                @endrole
+
+                <hr class="visible-sm visible-xs">
 
                 <div class="row">
                     <div class="col-md-3">
@@ -353,6 +370,22 @@
                        aria-controls="collapseMap" data-text-swap="Hide map" data-text-original="View on map">View on
                         map</a>
                 </p>
+
+                @role('admin')
+                <div class="row hidden-sm hidden-xs" style="margin-bottom: 20px;">
+                    <div class="col-md-6">
+                        <a href="{{route('tour.edit', $tour->id)}}" class="btn btn-warning" style="width: 100%">
+                            <i class="fa fa-edit"></i> Edit
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{{route('tour.delete', $tour->id)}}" class="btn btn-danger" style="width: 100%">
+                            <i class="fa fa-trash"></i> Delete
+                        </a>
+                    </div>
+                </div>
+                @endrole
+
                 <div class="box_style_1 expose">
                     <h3 class="inner">- Booking -</h3>
                     <div class="row">
@@ -412,13 +445,7 @@
                     <a class="btn_full_outline" href="#"><i class=" icon-heart"></i> Add to whislist</a>
                 </div><!--/box_style_1 -->
 
-                <div class="box_style_4">
-                    <i class="icon_set_1_icon-90"></i>
-                    <h4><span>Book</span> by phone</h4>
-                    <a href="tel://004542344599" class="phone">+45 423 445 99</a>
-                    <small>Monday to Friday 9.00am - 7.30pm</small>
-                </div>
-
+                @include('partials.need_help')
             </aside>
         </div><!--End row -->
     </div><!--End container -->

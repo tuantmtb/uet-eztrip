@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Forms\TourForm;
+use App\Http\Requests\CreateTourRequest;
 use App\Tour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -11,6 +12,15 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class TourController extends Controller
 {
+    /**
+     * TourController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('permission:create_tour')->only('create', 'store');
+    }
+
+
     /**
      * @param Collection|array $tours
      * @return array
@@ -56,33 +66,14 @@ class TourController extends Controller
         return $mapData;
     }
 
-    public function create(FormBuilder $formBuilder)
+    public function create()
     {
-        if (\Auth::user() == null) {
-            return redirect('/login');
-        }
-
-        $form = $formBuilder->create(TourForm::class, [
-            'method' => 'POST',
-            'url' => route('tour.store'),
-        ]);
-
-        return view('tour.create', compact('form'));
+        return view('tour.create');
     }
 
-    public function store(FormBuilder $formBuilder)
+    public function store(CreateTourRequest $request)
     {
-
-        $form = $formBuilder->create(TourForm::class);
-
-        if (!$form->isValid()) {
-            return redirect()->back()->withErrors($form->getErrors())->withInput();
-        }
-
-        /**
-         * @var Tour $tour
-         */
-        $tour = Tour::create($form->getRequest()->only([
+        $request_only = [
             'name',
             'short_description',
             'description',
@@ -90,8 +81,13 @@ class TourController extends Controller
             'price',
             'time_duration',
             'url_cover',
-            'url_gird',
-            'tourguide_id'
+            'url_gird'
+        ];
+        /**
+         * @var Tour $tour
+         */
+        $tour = Tour::create(array_merge($request->only($request_only), [
+            'tourguide_id' => \Auth::id()
         ]));
 
         return redirect()->route('tour.show', $tour->id);
@@ -105,12 +101,52 @@ class TourController extends Controller
         return view('tour.show', compact('tour', 'mapData'));
     }
 
+    public function edit($id) {
+        $tour = Tour::findOrFail($id);
+        return view('tour.edit', compact('tour'));
+    }
+
+    public function update($id, CreateTourRequest $request) {
+        /**
+         * @var Tour $tour
+         */
+        $tour = Tour::findOrFail($id);
+
+        $request_only = [
+            'name',
+            'short_description',
+            'description',
+            'place',
+            'price',
+            'time_duration',
+            'url_cover',
+            'url_gird'
+        ];
+
+        $tour->update($request->only($request_only));
+
+        return redirect()->route('tour.show', $tour->id);
+    }
+
     public function lists()
     {
         $tours = Tour::paginate(10);
         $mapData = self::mapData($tours->items());
 
         return view('tour.list', compact('tours', 'mapData'));
+    }
 
+    public function delete($id) {
+        /**
+         * @var Tour $tour
+         */
+        $tour = Tour::findOrFail($id);
+        $tour->delete();
+        \Session::flash('toastr', [
+            'level' => 'info',
+            'title' => 'Delete tour',
+            'message' => "$tour->name has just been deleted",
+        ]);
+        return redirect()->route('home');
     }
 }

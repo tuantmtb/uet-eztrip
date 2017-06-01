@@ -17,9 +17,12 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('tours/create', 'TourController@create')->name('tour.create');
-Route::post('tours/store', 'TourController@store')->name('tour.store');
+Route::post('tours/create', 'TourController@store')->name('tour.store');
 Route::get('tours/lists', 'TourController@lists')->name('tour.lists');
 Route::get('tours/{id}', 'TourController@show')->name('tour.show');
+Route::get('tours/{id}/delete', 'TourController@delete')->name('tour.delete');
+Route::get('tours/{id}/edit', 'TourController@edit')->name('tour.edit');
+Route::post('tours/{id}/edit', 'TourController@update')->name('tour.update');
 
 Route::get('orders/create', 'OrderController@create')->name('order.create');
 Route::post('orders/store', 'OrderController@store')->name('order.store');

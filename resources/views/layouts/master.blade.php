@@ -108,6 +108,11 @@
                                 <a href="javascript:void(0);" class="show-submenu">Tours <i
                                             class="icon-down-open-mini"></i></a>
                                 <ul>
+                                    @permission('create_tour')
+                                    <li><a href="{{route('tour.create')}}">
+                                            <i class="fa fa-plus"></i> Create tours
+                                        </a></li>
+                                    @endpermission
                                     <li><a href="{{route('tour.lists')}}">Ha Noi</a></li>
                                     <li><a href="{{route('tour.lists')}}">Ho Chi Minh</a></li>
                                 </ul>
@@ -167,9 +172,6 @@
         </div><!-- container -->
     </header><!-- End Header -->
 
-    <div id="toTop"></div><!-- Back to top button -->
-    <div id="overlay"></div><!-- Mask on input focus -->
-
     <main>
         <div class="page-container">
             <div class="page-content-wrapper">
@@ -178,7 +180,7 @@
         </div>
     </main>
 
-    <div id="toTop"></div><!-- Back to top button -->
+    <div id="toTop" style="z-index: 2;"></div><!-- Back to top button -->
     <div id="overlay"></div><!-- Mask on input focus -->
 
     <footer>

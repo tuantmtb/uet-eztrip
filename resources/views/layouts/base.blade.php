@@ -19,6 +19,7 @@
 <!-- SPECIFIC CSS -->
     {{Html::style('css/shop.css')}}
     {{Html::style('//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css')}}
+        {{Html::style('font-awesome-4.7.0/css/font-awesome.css')}}
 
 
 <!-- Google web fonts -->

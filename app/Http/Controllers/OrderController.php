@@ -51,7 +51,6 @@ class OrderController extends Controller
     }
 
     public function myOrder() {
-        $orders = collect();
         $tours = Tour::all()->random(6);
         /**
          * @var User $user
