@@ -196,7 +196,7 @@
                             </a>
                         </div>
                         <div class="tour_title">
-                            <h3>{{$tour->name}}</h3>
+                            <h3>{{str_limit($tour->name, 27-3)}}</h3>
                             <div class="rating">
                                 <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i
                                         class="icon-smile voted"></i><i
